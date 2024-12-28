@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 const Sidebar = () => {
+const { handleLogout } = useContext(AuthContext);
 
-const navigate = useNavigate()
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
@@ -13,36 +15,87 @@ const navigate = useNavigate()
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Painel</a>
+                    
+                    <Link to="/" className="nav-link active">
+                        Painel
+                    </Link>
                 </li>
                 
                 <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Cadastros
-                </a>
-                <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#">Alunos</a></li>
-                    <li><a className="dropdown-item" href="#">Modalidades</a></li>
-                    <li><a className="dropdown-item" href="#">Matrículas</a></li>
-                    <li><a className="dropdown-item" href="#">Exercícios</a></li>
-                    <li><a className="dropdown-item" href="#">Turmas</a></li>
-                    <li>
-                        <Link to={"/usuarios"} className="dropdown-item">
-                            Usuários
-                        </Link>
-                    </li>
-                    <li><hr className="dropdown-divider" /></li>
-                    
-                </ul>
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Cadastros
+                    </a>
+                    <ul className="dropdown-menu">
+                        <li>
+                            <Link to="/alunos" className="dropdown-item">
+                                Alunos
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/professores" className="dropdown-item">
+                                Professores
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/usuarios"} className="dropdown-item">
+                                Usuários
+                            </Link>
+                        </li>
+                        <li><hr className="dropdown-divider" /></li>
+                        <li>
+                            <Link to="/modalidades" className="dropdown-item">
+                                Modalidades
+                            </Link>
+                        </li>
+                       
+                        <li>
+                            <Link to="/treinos" className="dropdown-item">
+                                Treinos
+                            </Link>
+                        </li>
+
+                                          
+                        
+                    </ul>
+                </li>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Secretaria
+                    </a>
+                    <ul className="dropdown-menu">
+                        <li>
+                            <Link to="/turmas" className="dropdown-item">
+                                Turmas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/matriculas" className="dropdown-item">
+                                Matrículas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/treinos-alunos" className="dropdown-item">
+                                Treinos de Alunos
+                            </Link>
+                        </li>
+
+                        <li><hr className="dropdown-divider" /></li>
+                        
+                    </ul>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link">Financeiro</a>
+                    <Link to="/financeiro" className="nav-link">
+                        Financeiro
+                    </Link>
                 </li>
+
+                <li className="nav-item">
+                    <a onClick={() => handleLogout()} href="#" className="nav-link">
+                        Sair
+                    </a>
+                </li>   
             </ul>
-            <form className="d-flex" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            
             </div>
         </div>
     </nav>

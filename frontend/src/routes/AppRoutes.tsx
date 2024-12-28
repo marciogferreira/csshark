@@ -4,8 +4,16 @@ import NotFoundPage from "../pages/NotFoundPage";
 import DashboardPage from "../pages/DashboardPage";
 import UsuariosIndex from "../pages/UsuariosPage/UsuariosIndex";
 import UsuariosForm from "../pages/UsuariosPage/UsuariosForm";
-import { Component, ReactNode } from "react";
+import { ReactNode } from "react";
 import LayoutDefault from "../layouts/LayoutDefault";
+import AlunosIndex from "../pages/AlunosPage/AlunosIndex";
+import TreinosForm from "../pages/TreinosPage/TreinosForm";
+import ProfessoresIndex from "../pages/ProfessoresPage/ProfessoresIndex";
+import ModalidadesIndex from "../pages/ModalidadesPage/ModalidadesIndex";
+import TurmasIndex from "../pages/TurmasPage/TurmasIndex";
+import AlunosTurmasIndex from "../pages/AlunosTurmasPage/AlunosTurmasIndex";
+import AlunosTreinosIndex from "../pages/AlunosTreinosPage/AlunosTreinosIndex";
+import FinanceiroIndex from "../pages/FinanceiroPage";
 
 export default function AppRoutes() {
 
@@ -17,13 +25,24 @@ export default function AppRoutes() {
       <>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/painel" element={getLayout(<DashboardPage />)} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={getLayout(<DashboardPage />)} />
 
 
             <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
             <Route path="/usuarios/novo" element={getLayout(<UsuariosForm />)} />
             <Route path="/usuarios/editar/:id" element={getLayout(<UsuariosForm />)} />
+
+            <Route path="/alunos" element={getLayout(<AlunosIndex />)} />
+
+            <Route path="/professores" element={getLayout(<ProfessoresIndex />)} />
+            <Route path="/modalidades" element={getLayout(<ModalidadesIndex />)} />
+            <Route path="/treinos" element={getLayout(<TreinosForm />)} />
+            <Route path="/turmas" element={getLayout(<TurmasIndex />)} />
+            <Route path="/matriculas" element={getLayout(<AlunosTurmasIndex />)} />
+            <Route path="/treinos-alunos" element={getLayout(<AlunosTreinosIndex />)} />           
+          
+            <Route path="/financeiro" element={getLayout(<FinanceiroIndex />)} />
 
             <Route path="*" element={getLayout(<NotFoundPage />)} />
           </Routes>

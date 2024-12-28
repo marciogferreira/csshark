@@ -13,3 +13,12 @@ body {
     border-radius: 8px;
   }
   
+  .error {
+    color: red;
+  }
+
+  #login-page {
+    height: 100vh;
+    background-color: blue;
+    background-image: url('./assets/back.jpg');
+  }

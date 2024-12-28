@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
 const UsuariosIndex = () => {
+  
   const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([
     {
@@ -24,14 +25,14 @@ const UsuariosIndex = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Função para deletar usuário
-  const handleDelete = (id) => {
+  const handleDelete = (id: any) => {
     if (window.confirm("Deseja realmente excluir este usuário?")) {
       setUsuarios(usuarios.filter((usuario) => usuario.id !== id));
     }
   };
 
   // Função para editar (aqui apenas uma simulação)
-  const handleEdit = (id) => {
+  const handleEdit = (id: any) => {
     alert(`Editar usuário com ID: ${id}`);
   };
 
@@ -97,7 +98,7 @@ const UsuariosIndex = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="6" className="text-center">
+              <td colSpan={6} className="text-center">
                 Nenhum usuário encontrado.
               </td>
             </tr>
