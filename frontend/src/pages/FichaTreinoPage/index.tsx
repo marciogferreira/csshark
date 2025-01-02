@@ -23,7 +23,7 @@ export default function FichaTreinoPage() {
   return (
     <>
       <br />
-      
+          <h2>Olá, {user.name}</h2>
           {Object.keys(treino).map((name: any) => (
             <>
               <th colSpan={4}>

@@ -17,32 +17,51 @@ type DataProps = {
     children: ReactNode
 }
 
+type DataUser = {
+    name: string,
+    email: string,
+    role: any,
+}
+
 export const AuthProvider = ({ children }: DataProps) => {
 
     const [isLogged, setIsLogged] = useState(false);
-    const [user, setUser] = useState({ name: '', email: '', role: null });
+    const [user, setUser] = useState({} as DataUser);
+
+    async function getUser() { 
+        console.log(Util.getUser())
+        if(Util.getUser()) {
+             setUser(Util.getUser());
+        } else {
+            const response = await Api.post('me');
+            Util.setUser(response.data);
+            setUser(response.data);
+        }
+    }
 
     async function signIn(token: string) {
+        await getUser();
         await Util.setToken(token)
         setIsLogged(true);
     }
 
     async function handleLogout() {
         Util.removeToken();
+        Util.removeUser();
+        setUser({ name: '', email: '', role: null });
         setIsLogged(false);
-    }
-
-    async function getUser() { 
-        const response = await Api.post('me');
-        setUser(response.data);
+        
     }
 
     useEffect(() => {
-        if(Util.getToken()) {
+        const token = Util.getToken();
+        if(token) {
             setIsLogged(true);
-            getUser();
+            getUser()
         }
     }, []);
+
+    console.log(user)
 
     return (
         <AuthContext.Provider value={{ 
