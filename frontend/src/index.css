@@ -22,3 +22,7 @@ body {
     background-color: blue;
     background-image: url('./assets/back.jpg');
   }
+
+  .navbar {
+    background-color: #87CEFA;
+  }

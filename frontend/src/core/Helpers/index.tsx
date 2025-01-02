@@ -12,11 +12,13 @@ const Helpers = {
         }
         return 0;
     },
-    converterFloatReal: (value: string) => {
-        let inteiro = null, decimal = null, c = null, j = null;
+    converterFloatReal: (value: any) => {
+        let decimal: any = null;
+        let inteiro = null, c = null, j = null;
         let aux = new Array();
+        
         try {
-          value = "" + value.toFixed(2);
+          value = value.toFixed(2);
         } catch(e) {}
         
         if(!value) {
@@ -26,7 +28,7 @@ const Helpers = {
         //encontrou o ponto na string
         if(c > 0){
            //separa as partes em inteiro e decimal
-           inteiro = value.substring(0, c);
+           inteiro = value.toString().substring(0, c);
            decimal = value.substring(c + 1, value.length);
         } else{
            inteiro = value;
@@ -60,7 +62,8 @@ const Helpers = {
     },
     today: () => {
         const date = new Date();
-        let month = date.getMonth() + 1;
+        let month: string | number;
+        month = date.getMonth() + 1;
         month = month < 10 ? `0${month}` : month;
         return `${date.getDate()}/${month}/${date.getFullYear()}`
     },

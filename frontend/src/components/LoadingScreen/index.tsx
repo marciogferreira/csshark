@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+// import { useState } from 'react';
 export default function LoadingScreen() {
 
-    const [visible, setVisible] = useState(false);
-
+    // const [visible, setVisible] = useState(false);
+    const visible = false;
     return (
         <div 
             className="loading" 

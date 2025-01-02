@@ -1,31 +1,14 @@
-import Swal from 'sweetalert';
+import swal from 'sweetalert';
 
 const Message = {
     success: (msg: string) => {
-        Swal({
-            title: 'Sucesso',
-            text: msg,
-            icon: 'success',
-            confirmButtonText: 'Ok'
-        });
+        swal("Sucesso", msg, "success");
     },
     error: (msg: string) => {
-        Swal({
-            title: 'Oops!',
-            //text: msg,
-            html: msg,
-            icon: 'error',
-            confirmButtonText: 'Ok'
-        });
+        swal("Oops!", msg, "error");
     },
     infor: (msg: string) => {
-        Swal({
-            title: 'Oops!',
-            //text: msg,
-            html: msg,
-            icon: 'info',
-            confirmButtonText: 'Ok'
-        });
+        swal("Oops!", msg, "info");
     },
     confirmation: async (msg: string, callBack: any) => {
         
@@ -33,7 +16,6 @@ const Message = {
             title: "Atenção",
             text: msg,
             icon: "warning",
-            buttons: true,
             dangerMode: true,
           })
           .then((willDelete) => {
@@ -42,9 +24,9 @@ const Message = {
             }
         });
     },
-    validation: async (error: object) => {
+    validation: async (error: any) => {
         //const errors = error.response.data.errors;
-        const errors = error.response.data.validation;
+        const errors = error?.response.data.validation;
         //console.log(errors);
         // VALIDATION SYMFONY
         // errors.map(item => {

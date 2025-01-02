@@ -1,9 +1,8 @@
-import React from 'react';
 import { Modal as ModalBoot } from 'react-bootstrap';
 
-export default function Modal(props) {
+export default function Modal(props: any) {
     return (
-        <ModalBoot size={props.size} show={props.show} onHide={props.handleClose}>
+        <ModalBoot size={props.size || 'sm-down'} show={props.show} onHide={props.handleClose}>
             <ModalBoot.Header closeButton>
                 <ModalBoot.Title><h5>{props.title}</h5></ModalBoot.Title>
             </ModalBoot.Header>
@@ -16,7 +15,3 @@ export default function Modal(props) {
         </ModalBoot>
     );
 }
-
-Modal.defaultProps = {
-    size: "sm-down",
-};

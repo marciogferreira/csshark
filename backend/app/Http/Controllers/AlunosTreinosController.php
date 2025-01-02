@@ -11,4 +11,8 @@ class AlunosTreinosController extends ApiController {
     public function __construct(Services $services) {
         $this->services = $services;
     }
+
+    public function fichaByAluno($email) {
+        return $this->services->fichaByAluno($email);
+    }
 }

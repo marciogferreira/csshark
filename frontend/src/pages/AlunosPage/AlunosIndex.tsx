@@ -1,7 +1,5 @@
-import { Row, Col, FormControl } from 'react-bootstrap';
 import Crud from '../../components/Crud';
-import { ReactElement, ReactNode } from 'react';
-// import Api from 'src/core/api';
+import { ReactElement } from 'react';
 
 type DataProps = {
   Field: ReactElement | any;
@@ -18,6 +16,13 @@ const FormWrapper = ({ Field, ErrorMessage }: DataProps) => {
                         <Field name="nome" type="text" className="form-control" />
                         <span className="error" >
                             <ErrorMessage name="nome" component="span" />
+                        </span>
+                    </div>
+                    <div className='mb-3'>
+                        <label>E-mail</label>
+                        <Field name="email" type="text" className="form-control" />
+                        <span className="error" >
+                            <ErrorMessage name="email" component="span" />
                         </span>
                     </div>
                     <div className='mb-3'>
@@ -176,6 +181,7 @@ export default function AlunosIndex() {
             searchFieldName='search'
             emptyObject={{
                 nome: '',
+                email: '',
                 cpf: '',
                 dataInicio: '',
                 professor: '',
@@ -197,11 +203,14 @@ export default function AlunosIndex() {
             fields={[
                 { name: 'id', label: 'Id', classBody: 'min-width' },
                 { name: 'nome', label: 'Nome' },
-                { name: 'cpf', label: 'CPF' }
+                { name: 'cpf', label: 'CPF' },
+                { name: 'email', label: 'E-mail' },
+                { name: 'telefone', label: 'Telefone' }
             ]}
             validation={(Yup: object | any) => {
                 return {
                    nome: Yup.string().required('O nome é obrigatório'),
+                   email: Yup.string().required('O nome é obrigatório'),
                    cpf: Yup.string().required('O nome é obrigatório'),
                     dataInicio: Yup.date().required('A data de início é obrigatória'),
                     professor: Yup.string().required('O professor é obrigatório'),

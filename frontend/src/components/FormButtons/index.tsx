@@ -1,15 +1,15 @@
 import { Button, FormGroup } from 'react-bootstrap';
 
-type DataProps = {
-    enableBtnSave: boolean,
-    enableBtnCancel: boolean,
-    titleBtnSave: string,
-    titleBtnCancel: string,
-    handleSave: () => void,
-    handleCancel: () => void  // Function to call when cancel button is clicked.
-}
+// type DataProps = {
+//     enableBtnSave: boolean,
+//     enableBtnCancel: boolean,
+//     titleBtnSave: string,
+//     titleBtnCancel: string,
+//     handleSave: () => void,
+//     handleCancel: () => void  // Function to call when cancel button is clicked.
+// }
 
-export default function FormButtons(props: DataProps) {
+export default function FormButtons(props: any) {
     return (
         <FormGroup style={{ marginTop: '10px', float: 'right' }}>
             {!props.enableBtnSave && 

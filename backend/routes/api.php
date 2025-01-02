@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     // Crud Rest API
     Route::get('dashboard/totais', "DashboardController@totais");
+    Route::get('ficha-aluno/{email}', "AlunosTreinosController@fichaByAluno");
+    
 
     Route::resource('users', 'UsersController');
     Route::resource('colaborador', 'ColaboradorController');
@@ -85,9 +87,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('treinos', 'TreinosController');
     Route::resource('turmas', 'TurmasController');
     Route::resource('alunos-turmas', 'AlunosTurmasController');
-    Route::resource('alunos-treinos', 'AlunosTreinosController');
-
-    
+    Route::resource('alunos-treinos', 'AlunosTreinosController');   
 
 
     Route::resource('clients', 'ClientsController');

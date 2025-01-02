@@ -2,12 +2,15 @@ import { useContext } from "react"
 import Sidebar from "./SideBar"
 import AuthContext from "../contexts/AuthContext"
 import { Navigate } from "react-router-dom"
+import types from "../types"
+import SidebarAluno from "./SidebarAluno"
 
 type DataProps = {
     children: React.ReactNode | null
 }
 export default function LayoutDefault({ children }: DataProps) {
-    const { isLogged } = useContext(AuthContext)
+
+    const { user, isLogged } = useContext(AuthContext)
 
     if(!isLogged) {
         return <Navigate to="/login" />
@@ -15,8 +18,8 @@ export default function LayoutDefault({ children }: DataProps) {
 
     return(
         <>
-            <div className="container-fluid">
-                <Sidebar />
+            <div className="">
+                {types.USER_ROLE_ADMIN == user.role ? <Sidebar /> : <SidebarAluno />}
             </div>
             <div className="container">
                 {children}

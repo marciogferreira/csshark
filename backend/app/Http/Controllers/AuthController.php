@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AlunosModel;
 use App\Models\Permissao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Symfony\Component\HttpFoundation\Response;
 use Exception;
 use DB;
+use Illuminate\Http\JsonResponse;
 
 class AuthController extends Controller
 {
@@ -29,6 +32,31 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         $user = User::where('email', $request->email)->first();
+
+        // echo '<pre>'; print_r($request); die;
+        // Se Aluno
+        $aluno = AlunosModel::where('email', $request->email)->first();
+        
+        if(!$user && $aluno) {
+            $senhaAluno = substr($aluno->cpf, 0, 4).substr($aluno->cpf, -2);
+            
+            // echo '<pre>'; print_r($senhaAluno); die;
+            if($senhaAluno == $request->password) {
+                $user = User::create([
+                    'name' => $aluno->nome,
+                    'email' => $aluno->email,
+                    'password' => Hash::make($senhaAluno),
+                    'role' => User::ROLE_ALUNO,
+                ]);
+        
+            } else {
+                return new JsonResponse([
+                    'message' => 'Usuário ou senha inválidos'.$senhaAluno
+                ], Response::HTTP_UNAUTHORIZED);
+            }
+            
+        }
+
         if(!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['message' => 'Login ou senha incorreto'], 500);
         }

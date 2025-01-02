@@ -9,10 +9,13 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const DashboardPage = () => {
+  const { user } = useContext(AuthContext);
   // Dados para o gráfico
   // const data = {
   //   labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
@@ -52,6 +55,7 @@ const DashboardPage = () => {
       <br />
       
       <h4 className="mb-4">Painel</h4>
+      <p>Olá, <strong>{user.name}</strong></p>
       <hr />
       {/* <div className="card p-3 shadow-sm">
         <Bar data={data} options={options} />

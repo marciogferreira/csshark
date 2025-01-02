@@ -13,5 +13,8 @@ class TreinosModel extends Model
         'data'
     ];
 
+    public function treinoAluno() {
+        return $this->hasMany('App\Models\AlunosTreinosModel', 'treino_id', 'id');
+    }
 
 }

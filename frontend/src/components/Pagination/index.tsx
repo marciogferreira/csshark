@@ -1,12 +1,12 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 // import { Pagination as Paginate } from 'react-laravel-paginex'
 
-export default function Pagination(props) {
-    const options = {
-        nextButtonText: 'Próxima',
-        prevButtonText: 'Anterior'
-    };
+export default function Pagination(props: any) {
+    // const options = {
+    //     nextButtonText: 'Próxima',
+    //     prevButtonText: 'Anterior'
+    // };
+    console.log(props)
 
     //return null;
     return (

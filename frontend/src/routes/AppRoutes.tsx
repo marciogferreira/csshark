@@ -7,13 +7,14 @@ import UsuariosForm from "../pages/UsuariosPage/UsuariosForm";
 import { ReactNode } from "react";
 import LayoutDefault from "../layouts/LayoutDefault";
 import AlunosIndex from "../pages/AlunosPage/AlunosIndex";
-import TreinosForm from "../pages/TreinosPage/TreinosForm";
 import ProfessoresIndex from "../pages/ProfessoresPage/ProfessoresIndex";
 import ModalidadesIndex from "../pages/ModalidadesPage/ModalidadesIndex";
 import TurmasIndex from "../pages/TurmasPage/TurmasIndex";
 import AlunosTurmasIndex from "../pages/AlunosTurmasPage/AlunosTurmasIndex";
 import AlunosTreinosIndex from "../pages/AlunosTreinosPage/AlunosTreinosIndex";
 import FinanceiroIndex from "../pages/FinanceiroPage";
+import TreinosIndex from "../pages/TreinosPage/TreinosIndex";
+import FichaTreinoPage from "../pages/FichaTreinoPage";
 
 export default function AppRoutes() {
 
@@ -37,12 +38,14 @@ export default function AppRoutes() {
 
             <Route path="/professores" element={getLayout(<ProfessoresIndex />)} />
             <Route path="/modalidades" element={getLayout(<ModalidadesIndex />)} />
-            <Route path="/treinos" element={getLayout(<TreinosForm />)} />
+            <Route path="/treinos" element={getLayout(<TreinosIndex />)} />
             <Route path="/turmas" element={getLayout(<TurmasIndex />)} />
             <Route path="/matriculas" element={getLayout(<AlunosTurmasIndex />)} />
             <Route path="/treinos-alunos" element={getLayout(<AlunosTreinosIndex />)} />           
           
             <Route path="/financeiro" element={getLayout(<FinanceiroIndex />)} />
+            <Route path="/ficha" element={getLayout(<FichaTreinoPage />)} />
+            
 
             <Route path="*" element={getLayout(<NotFoundPage />)} />
           </Routes>

@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
 import Pagination from '../Pagination';
 import Form from '../Form';
@@ -7,31 +7,31 @@ import useDebounce from '../useDebounce';
 import Message from '../../core/Message';
 import Api from '../../core/api';
 
-type DataProps = {
-    fields: any,
-    validation: any,
-    FormWrapper: any,
-    endPoint: string,
-    searchFieldName: string,
-    emptyObject: object,
-    columns: Array<{ title: string, field: string }>,
-    title: string,
-    FormSearch: any,
-    fieldsHtml: any,
-    enableBtnNew: boolean,
-    saveContinueForm: boolean,
-    showActionsColumn: boolean ,
-    showDeleteColumn: boolean,
-    showEditColumn: boolean,
-    showNewButton: boolean,
-    showSearch: boolean,
-    showPagination: boolean,
-    showSort: boolean,
-    showTotal: boolean,
-    showViewHistory: boolean,
-    showViewAlterStatus: boolean
-}
-export default function Crud(props: DataProps) {   
+// type DataProps = {
+//     fields: any,
+//     validation: any,
+//     FormWrapper: any,
+//     endPoint: string,
+//     searchFieldName: string,
+//     emptyObject: object,
+//     columns: Array<{ title: string, field: string }>,
+//     title: string,
+//     FormSearch: any,
+//     fieldsHtml: any,
+//     enableBtnNew: boolean,
+//     saveContinueForm: boolean,
+//     showActionsColumn: boolean ,
+//     showDeleteColumn: boolean,
+//     showEditColumn: boolean,
+//     showNewButton: boolean,
+//     showSearch: boolean,
+//     showPagination: boolean,
+//     showSort: boolean,
+//     showTotal: boolean,
+//     showViewHistory: boolean,
+//     showViewAlterStatus: boolean
+// }
+export default function Crud(props: any) {   
 
     const [view, setView] = useState('list');
     const [data, setData] = useState(props.emptyObject);

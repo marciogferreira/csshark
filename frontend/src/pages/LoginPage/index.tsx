@@ -5,6 +5,7 @@ import { ErrorMessage, Field, Formik } from "formik";
 import Api from "../../core/api";
 import Message from "../../core/Message";
 import logo from '../../assets/logo.png';
+import * as Yup from 'yup';
 const LoginPage = () => {
   
   const navigate = useNavigate();
@@ -23,6 +24,8 @@ const LoginPage = () => {
     } finally {
     }
   }
+
+  
 
   if(isLogged) {
     return <Navigate to="/" />
@@ -43,17 +46,23 @@ const LoginPage = () => {
             login: '',
             senha: ''
           }}
+          validationSchema={Yup.object().shape({
+            login: Yup.string()
+              .required('Campo obrigatório.'),
+            senha: Yup.string()
+              .min(6, 'A senha deve ter pelo menos 6 caracteres.')
+              .required('A senha é obrigatória.'),
+          })}
           onSubmit={(values) => {
             login(values)
           }}
         >
-          {({ handleSubmit, values }) => (
+          {({ handleSubmit }) => (
             <>
               <div className="mb-3">
                 <label htmlFor="login" className="form-label">
                   Login
                 </label>
-                {values.login}
                 <Field 
                   type="text"
                   name="login"
@@ -81,7 +90,7 @@ const LoginPage = () => {
                   Esqueceu sua senha?
                 </a>
               </div>
-              <button onClick={() => handleSubmit} type="button" className="btn btn-primary w-100">
+              <button onClick={() => handleSubmit()} type="button" className="btn btn-primary w-100">
                 Entrar
               </button>
             </>

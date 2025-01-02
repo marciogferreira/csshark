@@ -20,7 +20,7 @@ type DataProps = {
 export const AuthProvider = ({ children }: DataProps) => {
 
     const [isLogged, setIsLogged] = useState(false);
-    const [user, setUser] = useState({ name: '', email: '' });
+    const [user, setUser] = useState({ name: '', email: '', role: null });
 
     async function signIn(token: string) {
         await Util.setToken(token)

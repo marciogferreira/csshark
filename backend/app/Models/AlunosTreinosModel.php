@@ -13,4 +13,12 @@ class AlunosTreinosModel extends Model
         'treino_id',
         'observacao',
     ];
+
+    public function treino() {
+        return $this->belongsTo(TreinosModel::class, 'treino_id');
+    }
+
+    public function aluno() {
+        return $this->belongsTo(AlunosModel::class, 'aluno_id');
+    }
 }

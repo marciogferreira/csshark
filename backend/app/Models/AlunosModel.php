@@ -10,6 +10,7 @@ class AlunosModel extends Model
     protected $fillable = [
         'id',
         'nome',
+        'email',
         'cpf',
         'senha',
         'dataInicio',
