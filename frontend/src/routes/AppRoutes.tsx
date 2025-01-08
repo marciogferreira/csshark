@@ -15,6 +15,7 @@ import AlunosTreinosIndex from "../pages/AlunosTreinosPage/AlunosTreinosIndex";
 import FinanceiroIndex from "../pages/FinanceiroPage";
 import TreinosIndex from "../pages/TreinosPage/TreinosIndex";
 import FichaTreinoPage from "../pages/FichaTreinoPage";
+import HomeAlunoPage from "../pages/HomeAlunoPage/HomeAlunoPage";
 
 export default function AppRoutes() {
 
@@ -26,8 +27,9 @@ export default function AppRoutes() {
       <>
         <BrowserRouter>
           <Routes>
+          <Route path="/" element={<HomeAlunoPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={getLayout(<DashboardPage />)} />
+            {/* <Route path="/" element={getLayout(<DashboardPage />)} /> */}
 
 
             <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
