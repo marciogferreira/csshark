@@ -27,9 +27,9 @@ export default function AppRoutes() {
       <>
         <BrowserRouter>
           <Routes>
-          <Route path="/" element={<HomeAlunoPage />} />
+            {/* <Route path="/" element={<HomeAlunoPage />} /> */}
             <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/" element={getLayout(<DashboardPage />)} /> */}
+            <Route path="/" element={getLayout(<DashboardPage />)} />
 
 
             <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
