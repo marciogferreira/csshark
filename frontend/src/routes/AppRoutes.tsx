@@ -23,12 +23,13 @@ export default function AppRoutes() {
     return <LayoutDefault>{component}</LayoutDefault>
   }
 
-  return(
-    <>
-      <BrowserRouter>
-        <Routes>
+   return(
+      <>
+        <BrowserRouter>
+          <Routes>
+          {/* <Route path="/" element={<HomeAlunoPage />} /> */}
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={getLayout(<HomeAlunosPage />)} />
+          <Route path="/" element={getLayout(<DashboardPage />)} />
 
           <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
           <Route path="/usuarios/novo" element={getLayout(<UsuariosForm />)} />

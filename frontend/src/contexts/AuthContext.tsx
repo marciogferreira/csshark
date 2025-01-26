@@ -42,8 +42,8 @@ export const AuthProvider = ({ children }: DataProps) => {
     }
 
     async function signIn(token: string) {
-        alert(token)
         await Util.setToken(token)
+        await getUser();
         setIsLogged(true);
         await getUser();
     }
