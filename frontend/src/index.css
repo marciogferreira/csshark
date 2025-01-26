@@ -3,6 +3,13 @@ body {
     background-color: #f8f9fa;
   }
   
+  .header {
+    background-color: #073350;
+    color: white;
+  }
+  .header i {
+    color: white;
+  }
   .sidebar {
     background-color: #343a40;
     color: white;
@@ -26,3 +33,70 @@ body {
   .navbar {
     background-color: #87CEFA;
   }
+
+i {
+  font-size: 2em;
+  text-align: center;
+  color: #777;
+}
+
+.card .card-body {
+  background-color: #AAA;
+}
+
+.menu-drawer {
+  overflow-y: auto;
+}
+
+.menu-drawer li {
+  padding-block: 5px;
+  list-style: none;
+  border-bottom: 1px solid #555;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.menu-drawer a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4em;
+}
+@keyframes showDrawer {
+  from {
+    left: -85%;
+  }
+  to {
+    left: 0;
+  }
+}
+.drawer-show {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 85%;
+  height: 100vh;
+  background-color: #343a40;
+  color: white;
+  animation: showDrawer 200ms;
+}
+@keyframes hideDrawer {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -85%  ;
+  }
+}
+.drawer-hide {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -85%;
+  width: 85%;
+  height: 100vh;
+  background-color: #343a40;
+  color: white;
+  animation: hideDrawer 200ms;
+}

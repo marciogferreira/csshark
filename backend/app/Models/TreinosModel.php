@@ -9,12 +9,12 @@ class TreinosModel extends Model
     protected $table = "treinos";
     protected $fillable = [
         'id',
-        'nome',
+        'aluno_id',
         'data'
     ];
 
-    public function treinoAluno() {
-        return $this->hasMany('App\Models\AlunosTreinosModel', 'treino_id', 'id');
+    public function aluno() {
+        return $this->hasMany('App\Models\AlunosModel');
     }
 
 }

@@ -15,6 +15,7 @@ import AlunosTreinosIndex from "../pages/AlunosTreinosPage/AlunosTreinosIndex";
 import FinanceiroIndex from "../pages/FinanceiroPage";
 import TreinosIndex from "../pages/TreinosPage/TreinosIndex";
 import FichaTreinoPage from "../pages/FichaTreinoPage";
+import HomeAlunosPage from "../pages/HomeAlunosPage";
 
 export default function AppRoutes() {
 
@@ -22,34 +23,33 @@ export default function AppRoutes() {
     return <LayoutDefault>{component}</LayoutDefault>
   }
 
-   return(
-      <>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/" element={getLayout(<DashboardPage />)} />
+  return(
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={getLayout(<HomeAlunosPage />)} />
 
+          <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
+          <Route path="/usuarios/novo" element={getLayout(<UsuariosForm />)} />
+          <Route path="/usuarios/editar/:id" element={getLayout(<UsuariosForm />)} />
 
-            <Route path="/usuarios" element={getLayout(<UsuariosIndex />)} />
-            <Route path="/usuarios/novo" element={getLayout(<UsuariosForm />)} />
-            <Route path="/usuarios/editar/:id" element={getLayout(<UsuariosForm />)} />
+          <Route path="/alunos" element={getLayout(<AlunosIndex />)} />
 
-            <Route path="/alunos" element={getLayout(<AlunosIndex />)} />
-
-            <Route path="/professores" element={getLayout(<ProfessoresIndex />)} />
-            <Route path="/modalidades" element={getLayout(<ModalidadesIndex />)} />
-            <Route path="/treinos" element={getLayout(<TreinosIndex />)} />
-            <Route path="/turmas" element={getLayout(<TurmasIndex />)} />
-            <Route path="/matriculas" element={getLayout(<AlunosTurmasIndex />)} />
-            <Route path="/treinos-alunos" element={getLayout(<AlunosTreinosIndex />)} />           
+          <Route path="/professores" element={getLayout(<ProfessoresIndex />)} />
+          <Route path="/modalidades" element={getLayout(<ModalidadesIndex />)} />
+          <Route path="/treinos" element={getLayout(<TreinosIndex />)} />
+          <Route path="/turmas" element={getLayout(<TurmasIndex />)} />
+          <Route path="/matriculas" element={getLayout(<AlunosTurmasIndex />)} />
+          <Route path="/treinos-alunos" element={getLayout(<AlunosTreinosIndex />)} />           
+        
+          <Route path="/financeiro" element={getLayout(<FinanceiroIndex />)} />
+          <Route path="/ficha" element={getLayout(<FichaTreinoPage />)} />
           
-            <Route path="/financeiro" element={getLayout(<FinanceiroIndex />)} />
-            <Route path="/ficha" element={getLayout(<FichaTreinoPage />)} />
-            
 
-            <Route path="*" element={getLayout(<NotFoundPage />)} />
-          </Routes>
-        </BrowserRouter>
-      </>
-    )
+          <Route path="*" element={getLayout(<NotFoundPage />)} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
 }

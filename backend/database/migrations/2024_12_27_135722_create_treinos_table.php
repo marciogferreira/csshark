@@ -15,8 +15,9 @@ class CreateTreinosTable extends Migration
     {
         Schema::create('treinos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->unsignedBigInteger('aluno_id');
             $table->json('data');
+            $table->foreign('aluno_id')->references('id')->on('alunos');
             $table->timestamps();
         });
     }

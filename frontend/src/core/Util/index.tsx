@@ -1,6 +1,6 @@
 const Util = {
     redirect: () => {
-        location.reload();
+        // location.reload();
     },
     removeToken: () => {
         localStorage.removeItem("SYS@TOKEN_CSSHARK");

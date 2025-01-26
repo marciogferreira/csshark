@@ -9,6 +9,8 @@ type DataContext = {
     user: any,
     setUser: (data: any) => void,
     signIn: (data: any) => void,
+    showMenu: boolean,
+    setShowMenu: (data: any) => void,
 }
 
 const AuthContext = createContext({} as DataContext);
@@ -27,7 +29,7 @@ export const AuthProvider = ({ children }: DataProps) => {
 
     const [isLogged, setIsLogged] = useState(false);
     const [user, setUser] = useState({} as DataUser);
-
+    const [show, setShow] = useState(false);
     async function getUser() { 
         console.log(Util.getUser())
         if(Util.getUser()) {
@@ -40,9 +42,10 @@ export const AuthProvider = ({ children }: DataProps) => {
     }
 
     async function signIn(token: string) {
-        await getUser();
+        alert(token)
         await Util.setToken(token)
         setIsLogged(true);
+        await getUser();
     }
 
     async function handleLogout() {
@@ -70,7 +73,8 @@ export const AuthProvider = ({ children }: DataProps) => {
             handleLogout,
             signIn,
             user,
-            setUser
+            setUser,
+            show, setShow
         }}>
             {children}
         </AuthContext.Provider>

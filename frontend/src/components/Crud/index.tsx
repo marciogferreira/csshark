@@ -167,8 +167,8 @@ export default function Crud(props: any) {
                                 handleDelete={handleDelete}
                             />
                             <Pagination
-                                changePage={(data: any) => setPage(data.page)} 
                                 data={pagination}                            
+                                onChange={(page: any) => setPage(page)} 
                             />
                         </>
                     }

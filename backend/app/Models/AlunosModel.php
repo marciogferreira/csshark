@@ -31,5 +31,8 @@ class AlunosModel extends Model
         'objetivo'
     ];
 
+    public function treino() {
+        return $this->hasMany('App\Models\TreinosModel', 'aluno_id', 'id');
+    }
 
 }
