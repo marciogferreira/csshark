@@ -21,7 +21,8 @@ class CreateProdutosTable extends Migration
             $table->float('custo')->nullable();
             $table->integer('quantidade')->nullable();
             $table->string('tipo_unidade')->nullable();
-
+            $table->float('desconto')->default(0);
+            $table->unsignedBigInteger('cor_id')->nullble();
             $table->string('tipo')->nullable();
             $table->string('codigo')->nullable();
             $table->string('codigo_geral')->nullable();

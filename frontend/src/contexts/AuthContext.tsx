@@ -11,6 +11,10 @@ type DataContext = {
     signIn: (data: any) => void,
     showMenu: boolean,
     setShowMenu: (data: any) => void,
+    loading: boolean,
+    setLoading: (data: any) => void,
+    show: boolean,
+    setShow: (data: any) => void
 }
 
 const AuthContext = createContext({} as DataContext);
@@ -30,6 +34,7 @@ export const AuthProvider = ({ children }: DataProps) => {
     const [isLogged, setIsLogged] = useState(false);
     const [user, setUser] = useState({} as DataUser);
     const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false);
     async function getUser() { 
         console.log(Util.getUser())
         if(Util.getUser()) {
@@ -67,15 +72,19 @@ export const AuthProvider = ({ children }: DataProps) => {
     console.log(user)
 
     return (
-        <AuthContext.Provider value={{ 
-            isLogged,
-            setIsLogged,
-            handleLogout,
-            signIn,
-            user,
-            setUser,
-            show, setShow
-        }}>
+        <AuthContext.Provider value={
+            { 
+                isLogged,
+                setIsLogged,
+                handleLogout,
+                signIn,
+                user,
+                setUser,
+                show, 
+                setShow,
+                loading,
+                setLoading,
+            } as any}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,5 +1,3 @@
-// import React from "react";
-// import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,54 +7,31 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useContext } from "react";
-import AuthContext from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import Profile from "../../components/Profile";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const DashboardPage = () => {
-  const { user } = useContext(AuthContext);
-  // Dados para o gráfico
-  // const data = {
-  //   labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-  //   datasets: [
-  //     {
-  //       label: "Receita (R$)",
-  //       data: [12000, 15000, 13000, 17000, 19000, 21000],
-  //       backgroundColor: "rgba(75, 192, 192, 0.5)",
-  //       borderColor: "rgba(75, 192, 192, 1)",
-  //       borderWidth: 1,
-  //     },
-  //     {
-  //       label: "Despesas (R$)",
-  //       data: [8000, 9000, 7000, 10000, 11000, 9000],
-  //       backgroundColor: "rgba(255, 99, 132, 0.5)",
-  //       borderColor: "rgba(255, 99, 132, 1)",
-  //       borderWidth: 1,
-  //     },
-  //   ],
-  // };
-
-  // const options = {
-  //   responsive: true,
-  //   plugins: {
-  //     legend: {
-  //       position: "top",
-  //     },
-  //     title: {
-  //       display: true,
-  //       text: "Resumo Financeiro Mensal",
-  //     },
-  //   },
-  // };
+   
+  const navigate = useNavigate();
 
   return (
     <div>
-      <br />
-      
-      <h4 className="mb-4">Painel</h4>
-      <p>Olá, <strong>{user.name}</strong></p>
+      <Profile />
       <hr />
+      <div className="card-painel" onClick={() => navigate('/ficha')}>
+        <h5>Meus Treinos</h5>
+        <p>
+          Aqui você pode visualizar os seus ganhos e despesas do mês. Clique na seta à direita para expandir o gráfico.
+        </p>
+      </div>
+      <div className="card-painel"  onClick={() => navigate('/aluno/modalidades')}>
+        <h5>Modalidades</h5>
+        <p>
+          Aqui você pode visualizar os seus ganhos e despesas do mês. Clique na seta à direita para expandir o gráfico.
+        </p>
+      </div>
       {/* <div className="card p-3 shadow-sm">
         <Bar data={data} options={options} />
       </div> */}

@@ -66,10 +66,9 @@ class AlunosTreinosServices extends BaseServices {
         return $params;
     }
 
-    public function fichaByAluno($email) {
-        $aluno = AlunosModel::where('email', $email)->first();
-        $alunoTreino = $this->model->where('aluno_id', $aluno->id)->first();
-        $treino = TreinosModel::find($alunoTreino->treino_id);
+    public function fichaByAluno($cpf) {
+        $aluno = AlunosModel::where('cpf', $cpf)->first();
+        $treino = TreinosModel::where('aluno_id', $aluno->id)->first();
         return response()->json($treino);
     }
     

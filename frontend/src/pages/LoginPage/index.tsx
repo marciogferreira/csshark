@@ -98,7 +98,7 @@ const LoginPage = () => {
         </Formik>
         
         <div className="text-center mt-3">
-          <button className="btn btn-outline-secondary w-100" onClick={() => window.location.href = "/novo-aluno"}>
+          <button className="btn btn-outline-secondary w-100" onClick={() => navigate('/aluno/novo')}>
             Novo Aluno
           </button>
         </div>

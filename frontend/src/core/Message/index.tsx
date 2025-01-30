@@ -10,18 +10,33 @@ const Message = {
     infor: (msg: string) => {
         swal("Oops!", msg, "info");
     },
-    confirmation: async (msg: string, callBack: any) => {
-        
+    confirmation: (msg: string, callback: () => void) => {
         swal({
-            title: "Atenção",
-            text: msg,
-            icon: "warning",
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-                callBack();
+          title: msg,
+          text: "Confirme abaixo",
+          icon: "warning",
+          buttons: {
+            cancel: {
+              text: "Cancel",
+              value: null,
+              visible: true,
+              className: "",
+              closeModal: true,
+            },
+            confirm: {
+              text: "OK",
+              value: true,
+              visible: true,
+              className: "",
+              closeModal: true
             }
+          },
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            callback();
+          }
         });
     },
     validation: async (error: any) => {

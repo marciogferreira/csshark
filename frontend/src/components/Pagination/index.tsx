@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 // import { Pagination as Paginate } from 'react-laravel-paginex'
-import { Pagination as Paginate } from "react-laravel-pagination";
+// import { Pagination as Paginate } from "react-laravel-pagination";
 
 export default function Pagination(props: any) {
     // const options = {

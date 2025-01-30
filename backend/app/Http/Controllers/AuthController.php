@@ -28,14 +28,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            
             'password' => 'required'
         ]);
         $user = User::where('email', $request->email)->first();
 
         // echo '<pre>'; print_r($request); die;
         // Se Aluno
-        $aluno = AlunosModel::where('email', $request->email)->first();
+        $aluno = AlunosModel::where('cpf', $request->email)->first();
         
         if(!$user && $aluno) {
             $senhaAluno = substr($aluno->cpf, 0, 4).substr($aluno->cpf, -2);
@@ -44,9 +44,10 @@ class AuthController extends Controller
             if($senhaAluno == $request->password) {
                 $user = User::create([
                     'name' => $aluno->nome,
-                    'email' => $aluno->email,
+                    'email' => $aluno->cpf,
                     'password' => Hash::make($senhaAluno),
                     'role' => User::ROLE_ALUNO,
+                    'ativo' => 1
                 ]);
         
             } else {

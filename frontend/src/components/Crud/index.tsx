@@ -45,6 +45,22 @@ export default function Crud(props: any) {
     const debouncedSearchParamsTerm = useDebounce(paramsSearch, 500);
     
 
+    async function loadData() {
+        let params = {
+            page: page,
+            ...paramsSearch
+        };
+        
+        if(props.searchFieldName && search) {
+            // params[props.searchFieldName] = search;
+        }
+        const response = await Api.get(props.endPoint, {
+            params: { ...params}
+        });
+        setList(response.data.data);
+        setPagination(response.data);
+    }
+    
     async function handleSubmit (values: any) {
         let msg = 'Registro Salvo com Sucesso';
 
@@ -91,21 +107,7 @@ export default function Crud(props: any) {
         
     }
 
-    async function loadData() {
-        let params = {
-            page: page,
-            ...paramsSearch
-        };
-        
-        if(props.searchFieldName && search) {
-            // params[props.searchFieldName] = search;
-        }
-        const response = await Api.get(props.endPoint, {
-            params: { ...params}
-        });
-        setList(response.data.data);
-        setPagination(response.data);
-    }
+   
 
     useEffect(() => {
         loadData();

@@ -21,7 +21,7 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
 
   async function handleSubmit() {
     if(values.id) {
-      await Api.put(`alunos-treinos/${values.id}`, {
+      await Api.put(`treinos/${values.id}`, {
         aluno_id: values.aluno_id,
         treino_id: values.treino_id,
         data: treino,
@@ -29,7 +29,7 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
       });
       Message.success("Treino Atualizado com Sucesso.")
     } else {
-      await Api.post('alunos-treinos', {
+      await Api.post('treinos', {
         aluno_id: values.aluno_id,
         data: treino,
         observacao: values.observacao
@@ -72,16 +72,19 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
           {Object.keys(treino).map((name: any) => (
             <>
               <tr>
-                <th colSpan={4}>
+                <th colSpan={5}>
                   <h4>{name.toUpperCase()}</h4>
                 </th>
+                
               </tr>
 
               {treino && treino[name].map((item: any, index: number) => (
                 <tr key={index}>
                   <td>
-                    
                     {item.exercicio}
+                  </td>
+                  <td>
+                    <input type="checkbox" checked={item.show}  onChange={e => handleTreino(name, item.id, 'show', e.target.checked)} />
                   </td>
                   <td>
                     <label>
@@ -149,7 +152,7 @@ export default function TreinosIndex() {
     return (
         <Crud
             title="Treinos de Alunos"
-            endPoint="alunos-treinos"
+            endPoint="treinos"
             searchFieldName='search'
             emptyObject={{
                 nome: '',

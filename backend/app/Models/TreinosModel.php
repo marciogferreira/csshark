@@ -14,7 +14,7 @@ class TreinosModel extends Model
     ];
 
     public function aluno() {
-        return $this->hasMany('App\Models\AlunosModel');
+        return $this->belongsTo('App\Models\AlunosModel', 'aluno_id');
     }
 
 }

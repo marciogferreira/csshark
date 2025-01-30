@@ -16,6 +16,8 @@ class CreateFormaPagamentosTable extends Migration
         Schema::create('forma_pagamentos', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('tipo_pagamento');
+            $table->float('desconto')->default(0); 
             $table->timestamps();
         });
     }

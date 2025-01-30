@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -11,7 +18,7 @@ body {
     color: white;
   }
   .sidebar {
-    background-color: #343a40;
+    background-color: #073350;
     color: white;
   }
   
@@ -26,7 +33,7 @@ body {
 
   #login-page {
     height: 100vh;
-    background-color: blue;
+    background-color: #073350;
     background-image: url('./assets/back.jpg');
   }
 
@@ -76,7 +83,7 @@ i {
   left: 0;
   width: 85%;
   height: 100vh;
-  background-color: #343a40;
+  background-color: #073350;
   color: white;
   animation: showDrawer 200ms;
 }
@@ -96,7 +103,132 @@ i {
   left: -85%;
   width: 85%;
   height: 100vh;
-  background-color: #343a40;
+  background-color: #073350;
   color: white;
   animation: hideDrawer 200ms;
+}
+
+.card-custom {
+  background-color: white;
+  color: #073350;
+  padding: 15px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.42);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.42);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+/* treinos */
+.titulo-treino {
+  
+  color: #073350;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.card-treino {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  color: #444;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.titulo-exercicio {
+  background-color: #f7f7f7;
+  color: #444;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.circle-x {
+  font-size: 2em;
+  padding: 20px;
+}
+.circle-1, .circle-2 {
+  width: 100px;
+  height: 100px !important;
+  border-radius: 100%;
+  border: 7px solid #073350;
+  padding: 20px;
+  font-size: 2em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-painel {
+  background-color: #DDD;
+  color: rgb(23 37 84)white;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: left;
+  h5 {
+    
+    font-weight: bold;
+  }
+  p {
+    
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .circle-x {
+    font-size: 1em;
+    padding: 10px;
+  }
+  .circle-1, .circle-2 {
+    width: 40px;
+    height: 40px !important;
+    border-radius: 100%;
+    border: 3px solid #073350;
+    padding: 20px;
+    font-size: 1em;
+  }
+}
+
+
+#header-aluno-novo {
+  background: #073350 url('./assets/karyna.png');
+  color: white;
+  padding: 10px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.page-aluno-novo {
+  background: #073350 url('./assets/karyna.png');
+}
+
+#menu-sidebar {
+  background: url('./assets/back.png.png') no-repeat;
+}
+/* MENU */
+ul#menu {
+  padding-left: 10px !important;
+  
+}
+uL#menu li a {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #AAA;
 }

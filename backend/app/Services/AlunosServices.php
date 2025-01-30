@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\AlunosModel as Model;
+use Exception;
 
 class AlunosServices extends BaseServices {
     
@@ -18,9 +19,17 @@ class AlunosServices extends BaseServices {
 
     function beforeCreateData($data) {
         
+        $aluno = Model::where('cpf', $data['cpf'])->first();
+        if($aluno) {
+            throw new Exception('Já existe um(a) aluno(a) cadastrado(a) com esse CPF. Por favor, dirija-se a recepção do Box.');
+        }
+
         if(isset($data['cpf']) && !empty($data['cpf'])) {
             $data['senha'] = md5($data['cpf']);
         }
         return $data;
     }
+
+
+
 }
