@@ -26,9 +26,14 @@ Api.interceptors.response.use(function (response) {
       const { message } = error.response.data;
       const errorMessage = error.response.data.error;
       
+      if(message == 'Unauthenticated.') {
+        Util.removeToken();
+        Util.redirect();
+      }
       if(message) {
         Message.error(message);
       }
+      
       if(errorMessage) {
         Message.error(errorMessage);
       } else {

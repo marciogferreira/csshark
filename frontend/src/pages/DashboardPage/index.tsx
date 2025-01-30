@@ -32,9 +32,12 @@ const DashboardPage = () => {
           Aqui você pode visualizar os seus ganhos e despesas do mês. Clique na seta à direita para expandir o gráfico.
         </p>
       </div>
-      {/* <div className="card p-3 shadow-sm">
-        <Bar data={data} options={options} />
-      </div> */}
+      <div className="card-painel"  onClick={() => navigate('/professores/equipe')}>
+        <h5>Professores</h5>
+        <p>
+          Aqui você poderá conhecer toda a nossa equipe de professores.
+        </p>
+      </div>
     </div>
   );
 };

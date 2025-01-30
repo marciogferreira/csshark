@@ -16,5 +16,9 @@ class TurmasModel extends Model
         'colaborador_id'
     ];
 
+    public function modalidade() {
+        return $this->belongsTo('App\Models\ModalidadesModel', 'modalidade_id');
+    }
+
 
 }

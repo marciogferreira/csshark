@@ -12,5 +12,9 @@ class ModalidadesModel extends Model
         'nome'
     ];
 
+    public function turmas() {
+        return $this->hasMany(TurmasModel::class, 'modalidade_id', 'id');
+    }
+
 
 }

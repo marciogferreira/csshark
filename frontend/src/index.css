@@ -28,7 +28,7 @@ body {
   }
   
   .error {
-    color: red;
+    color: red !important;
   }
 
   #login-page {
@@ -231,4 +231,20 @@ uL#menu li a {
   padding-top: 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid #AAA;
+}
+
+.loading {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  background-color: #f2f2f2;
+}
+
+.hide {
+  display: none !important;
 }

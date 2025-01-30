@@ -9,10 +9,11 @@ import * as Yup from 'yup';
 const LoginPage = () => {
   
   const navigate = useNavigate();
-  const { isLogged, signIn } = useContext(AuthContext)
+  const { isLogged, signIn, setLoading } = useContext(AuthContext)
 
   async function login(values: any) {
     try {
+      setLoading(true)
       const response = await Api.post('login', {
         email: values.login,
         password: values.senha
@@ -22,10 +23,9 @@ const LoginPage = () => {
       navigate('/');
     } catch(e) {
     } finally {
+      setLoading(false)
     }
   }
-
-  
 
   if(isLogged) {
     return <Navigate to="/" />
@@ -71,7 +71,9 @@ const LoginPage = () => {
                   placeholder="Digite seu email ou CPF"
                   className="form-control"
                 />
-                <ErrorMessage name="login" className="error" />
+                <span className="error" >
+                  <ErrorMessage name="login" />
+                </span>
               </div>
               <div className="mb-3">
                 <label htmlFor="senha" className="form-label">
@@ -84,7 +86,9 @@ const LoginPage = () => {
                   className="form-control"
                   placeholder="Digite sua Senha"
                 />
-                <ErrorMessage name="senha" className="error" />
+                <span className="error" >
+                  <ErrorMessage name="senha" />
+                </span>
               </div>
               <div className="mb-3 text-end">
                 <a href="/recuperar-senha" className="text-decoration-none">
@@ -99,7 +103,7 @@ const LoginPage = () => {
         </Formik>
         
         <div className="text-center mt-3">
-          <button className="btn btn-outline-secondary w-100" onClick={() => navigate('/aluno/novo')}>
+          <button className="btn btn-warning  w-100" onClick={() => navigate('/aluno/novo')}>
             Novo Aluno
           </button>
         </div>

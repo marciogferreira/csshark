@@ -17,6 +17,7 @@ import TreinosIndex from "../pages/TreinosPage/TreinosIndex";
 import FichaTreinoPage from "../pages/FichaTreinoPage";
 import NovoAlunoPage from "../pages/NovoAlunoPage";
 import ModalidadesAlunosPages from "../pages/ModalidadesAlunosPage";
+import Professores from "../pages/Professores";
 
 export default function AppRoutes() {
 
@@ -48,6 +49,7 @@ export default function AppRoutes() {
           <Route path="/ficha" element={getLayout(<FichaTreinoPage />)} />
           <Route path="/aluno/novo" element={<NovoAlunoPage />} />
           <Route path="/aluno/modalidades" element={getLayout(<ModalidadesAlunosPages />)} />
+          <Route path="/professores/equipe" element={getLayout(<Professores />)} />
           
           
           <Route path="*" element={getLayout(<NotFoundPage />)} />
