@@ -36,8 +36,9 @@ const LoginPage = () => {
     <div id="login-page" className="d-flex justify-content-center align-items-center vh-100">
       <div className="card p-4 shadow" style={{ width: "350px" }}>
         <div className="text-center mb-4">
-          
-          <img src={logo} width="100px" alt="" />
+          <div className="d-flex justify-content-center">
+            <img src={logo} width="100px" alt="" />
+          </div>
           <h5>Bem-vindo(a) à Academia</h5>
           
         </div>
