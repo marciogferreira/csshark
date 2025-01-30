@@ -19,6 +19,13 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com.br',
+            'password' => Hash::make('091188'),
+            'role' => '1',
+        ]);
+
+        User::create([
+            'name' => 'Danilson ',
+            'email' => 'danilson@shark.com.br',
             'password' => Hash::make('123456'),
             'role' => '1',
         ]);
@@ -26,7 +33,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Aluno',
             'email' => 'aluno@aluno.com.br',
-            'password' => Hash::make('123456'),
+            'password' => Hash::make('091188'),
             'role' => '2',
         ]);
 
@@ -34,11 +41,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Professor',
         ]);
 
-        for($i = 1; $i <= 20; $i++) {
-            ModalidadesModel::create([
-                'nome' => 'Modalidade -'.($i+1)
-            ]);
-        }
+        // for($i = 1; $i <= 20; $i++) {
+        //     ModalidadesModel::create([
+        //         'nome' => 'Modalidade -'.($i+1)
+        //     ]);
+        // }
 
         
     }
