@@ -23,13 +23,13 @@ const DashboardPage = () => {
       <div className="card-painel" onClick={() => navigate('/ficha')}>
         <h5>Meus Treinos</h5>
         <p>
-          Aqui você pode visualizar os seus ganhos e despesas do mês. Clique na seta à direita para expandir o gráfico.
+          Aqui você pode visualizar seu treino.
         </p>
       </div>
       <div className="card-painel"  onClick={() => navigate('/aluno/modalidades')}>
         <h5>Modalidades</h5>
         <p>
-          Aqui você pode visualizar os seus ganhos e despesas do mês. Clique na seta à direita para expandir o gráfico.
+          Aqui você pode visualizar as modadlidades do box e consegue realizar sua matrícula.
         </p>
       </div>
       <div className="card-painel"  onClick={() => navigate('/professores/equipe')}>
