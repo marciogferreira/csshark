@@ -221,6 +221,7 @@ i {
 
 #menu-sidebar {
   background: url('./assets/back.png.png') no-repeat;
+  overflow-y: auto;
 }
 /* MENU */
 ul#menu {
