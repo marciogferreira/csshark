@@ -159,11 +159,11 @@ i {
   padding: 20px;
 }
 .circle-1, .circle-2 {
-  width: 100px;
-  height: 100px !important;
+  width: 90px;
+  height: 90px !important;
   border-radius: 100%;
   border: 7px solid #073350;
-  padding: 20px;
+  padding: 18px;
   font-size: 2em;
 
   display: flex;

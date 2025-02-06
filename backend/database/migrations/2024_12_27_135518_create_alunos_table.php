@@ -17,7 +17,7 @@ class CreateAlunosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('email');
-            $table->string('cpf');
+            $table->string('cpf')->unique();
             $table->string('senha');
             $table->date('dataInicio')->nullable();
             $table->string('professor')->nullable();

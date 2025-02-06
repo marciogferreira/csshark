@@ -102,9 +102,9 @@ export default function Crud(props: any) {
     }
 
     function handleList(item: any) {
-        setView('list');
         console.log(item)
-        
+        setView('list');
+        loadData();        
     }
 
    
