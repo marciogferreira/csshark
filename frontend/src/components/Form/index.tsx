@@ -42,6 +42,7 @@ function Form(props: any){
                         enableBtnCancel={false} 
                         titleBtnSave={''} 
                         titleBtnCancel={''} 
+                        isSubmitting={objects.isSubmitting}
                         {...props}
                         handleSave={objects.handleSubmit}                    
                     />}

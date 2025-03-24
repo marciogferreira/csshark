@@ -13,7 +13,7 @@ export default function FormButtons(props: any) {
     return (
         <FormGroup style={{ marginTop: '10px', float: 'right' }}>
             {!props.enableBtnSave && 
-                <Button size="sm" variant="success" onClick={props.handleSave}>{props.titleBtnSave || 'Salvar'}</Button>
+                <Button disabled={props.isSubmitting} size="sm" variant="success" onClick={props.handleSave}>{props.titleBtnSave || 'Salvar'}</Button>
             }
             &nbsp;
             {!props.enableBtnCancel && 
