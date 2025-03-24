@@ -25,7 +25,6 @@ export default function FichaTreinoPage() {
         if(response.data.data) {
           setStatus('successo');
         }
-        
       } catch(e) {
         
       } finally {
@@ -84,6 +83,7 @@ export default function FichaTreinoPage() {
                 <Card>
                   <h4 className="">{name.toUpperCase()}</h4>
                 </Card>
+                {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).length <= 0 && <h5 className="text-center p-2">Sem Sequências Definidas - Fale com seu(ua) Personal</h5>}
                 {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).map((item: any, index: number) => (
                   <div className="card-treino"  key={index}>
                     <div>
