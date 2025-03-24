@@ -1,4 +1,16 @@
 const treinos = {
+    tipos: {
+        peito: "",
+        costas: "",
+        biceps: "",
+        triceps: "",
+        ombro: "",
+        anterior: "",
+        posterior: "",
+        panturrilha: "",
+        abdominais: "",
+        aerobico: ""
+    },
     peito: [
         { id: 1, show: false, exercicio: "Crucifixo c/ Halteres", series: 3, reps: 15, obs: "" },
         { id: 2, show: false, exercicio: "Peck Deck", series: 3, reps: 15, obs: "" },

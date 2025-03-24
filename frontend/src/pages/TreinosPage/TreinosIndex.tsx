@@ -39,6 +39,11 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
     
   }
 
+  async function handleTipo(name: string, value: string) {
+    treino.tipos[name] = value;
+    setTreino({...treino});
+  }
+
   async function handleTreino(name: any, id: any, item: any, value: any) {
     const lista = treino[name];
     const itemIndex = lista.findIndex((i: any) => i.id === id);
@@ -50,7 +55,8 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
     getAlunos();
     console.log(values.data)
     if(values.id) {
-      setTreino(JSON.parse(values.data));
+      const dataJson = JSON.parse(values.data)
+      setTreino({...treino, ...dataJson});
     }
   }, [])
 
@@ -71,14 +77,28 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
         <tbody>
           {Object.keys(treino).map((name: any) => (
             <>
+              {name != 'tipos' && 
               <tr>
-                <th colSpan={5}>
-                  <h4>{name.toUpperCase()}</h4>
+                <th colSpan={2}>
+                  <h4>
+                    {name.toUpperCase()}
+                  </h4>
                 </th>
-                
-              </tr>
+                <td colSpan={3}>
+                  <label htmlFor="">Tipo de Treino</label>
+                  <select value={treino.tipos[name]} onChange={e => handleTipo(name, e.target.value)} name="tipo" id="tipo" className="form-control">
+                    <option value="">Selecione um Tipo</option>
+                    <option value="A">Tipo A</option>
+                    <option value="B">Tipo B</option>
+                    <option value="C">Tipo C</option>
+                    <option value="D">Tipo D</option>
+                    <option value="E">Tipo E</option>
+                  </select>
+                </td> 
+                </tr>
+              }
 
-              {treino && treino[name].map((item: any, index: number) => (
+              {treino && name != 'tipos' && treino[name].map((item: any, index: number) => (
                 <tr key={index}>
                   <td>
                     {item.exercicio}
