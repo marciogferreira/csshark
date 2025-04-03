@@ -40,8 +40,23 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
   }
 
   async function handleTipo(name: string, value: string) {
-    treino.tipos[name] = value;
-    setTreino({...treino});
+    // treino.tipos[name] = value;
+    // setTreino({...treino});
+    console.log(name)
+    setTreino(prev => {
+      prev.tipos[name] = value;
+      const lista = prev[name].map((item: any) =>{
+        item.tipo = value;
+        return item;
+      })
+      
+      // prev[name] = prev[name].map((item: any) => item.tipo = value)
+      return {...prev, ...{ [name]: lista}};
+      
+      // const lista = prev[name].map((item: any) => item.tipo = value);
+      // return {...prev, ...{ [name]: lista }};
+      //
+    })
   }
 
   async function handleTreino(name: any, id: any, item: any, value: any) {
@@ -53,13 +68,12 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
 
   useEffect(() => {
     getAlunos();
-    console.log(values.data)
     if(values.id) {
       const dataJson = JSON.parse(values.data)
       setTreino({...treino, ...dataJson});
     }
   }, [])
-
+console.log(treino)
   return (
     <>
       <Field
@@ -79,7 +93,7 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
             <>
               {name != 'tipos' && 
               <tr>
-                <th colSpan={2}>
+                <th colSpan={3}>
                   <h4>
                     {name.toUpperCase()}
                   </h4>
@@ -142,6 +156,16 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
                           onChange={e => handleTreino(name, item.id, 'obs', e.target.value)}
                         />
                     </label>
+                  </td>
+                  <td>
+                    <select value={item.tipo} onChange={e => handleTreino(name, item.id, 'tipo', e.target.value)} name="tipo" id="tipo" className="form-control">
+                      <option value="">Selecione um Tipo</option>
+                      <option value="A">Tipo A</option>
+                      <option value="B">Tipo B</option>
+                      <option value="C">Tipo C</option>
+                      <option value="D">Tipo D</option>
+                      <option value="E">Tipo E</option>
+                    </select>
                   </td>
                 </tr>
               ))}

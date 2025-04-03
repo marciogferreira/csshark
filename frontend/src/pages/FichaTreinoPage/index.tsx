@@ -77,14 +77,19 @@ export default function FichaTreinoPage() {
             </div>
             <br />
             {Object.keys(treino).filter((name: any) => {
+              return name;
               return treino.tipos[name] === selectedType;
             }).map((name: any) => (
               <>
-                <Card>
-                  <h4 className="">{name.toUpperCase()}</h4>
-                </Card>
+                {treino && name != 'tipos' && treino[name].filter((item: any) => item.show && item.tipo === selectedType).length > 0 &&
+                  <Card>
+                    <h4 className="">{name.toUpperCase()}</h4>
+                  </Card>
+                }
                 {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).length <= 0 && <h5 className="text-center p-2">Sem Sequências Definidas - Fale com seu(ua) Personal</h5>}
-                {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).map((item: any, index: number) => (
+                {treino && name != 'tipos' && treino[name]
+                .filter((item: any) => item.show && item.tipo === selectedType)
+                .map((item: any, index: number) => (
                   <div className="card-treino"  key={index}>
                     <div>
                       <strong>
