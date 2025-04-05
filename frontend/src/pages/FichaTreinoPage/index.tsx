@@ -61,9 +61,9 @@ export default function FichaTreinoPage() {
                 return [...acc, value];
               })
               .sort()
-              .map((value: any) => (
+              .map((value: any, index: number) => (
               <>
-                <li className="mt-3 card p-2" onClick={() => setSelectedType(value)}>
+                <li style={{ listStyle: 'none' }} className={`rounded-md mt-3 p-4   ${index % 2 == 0 ? 'bg-blue-950 text-white' : 'bg-gray-300 text-black-200'} `} onClick={() => setSelectedType(value)}>
                   <h4>Treino {value}</h4>
                 </li>
               </>
@@ -144,7 +144,7 @@ export default function FichaTreinoPage() {
 
             {status &&
               <div className="d-flex justify-content-center mb-3 mt-3">
-                <button className="btn btn-primary">Finalizar Treino</button>
+                <button className="btn btn-primary"  onClick={() => setSelectedType(null)}>Finalizar Treino</button>
               </div>
             }
           </> 
