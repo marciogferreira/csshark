@@ -130,6 +130,15 @@ i {
   border-radius: 10px;
   text-align: center;
 }
+.aba-left {
+  background-color: #073350;
+  color: white;
+  border-radius: 0px 10px 10px 0px;
+  padding: 10px;
+  padding-left: 30px;
+  position: relative;
+  left: -30px;
+}
 .card-treino {
   display: flex;
   align-items: center;
@@ -146,7 +155,7 @@ i {
   color: #444;
   padding: 10px;
   border-radius: 10px;
-  text-align: center;
+  
 }
 .circles {
   display: flex;
@@ -194,8 +203,8 @@ i {
     padding: 10px;
   }
   .circle-1, .circle-2 {
-    width: 40px;
-    height: 40px !important;
+    width: 25px;
+    height: 25px !important;
     border-radius: 100%;
     border: 3px solid #073350;
     padding: 20px;

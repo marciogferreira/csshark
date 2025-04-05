@@ -2,7 +2,7 @@ import Api from "../../core/api";
 import lista_treinos from './lista_treinos';
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../contexts/AuthContext";
-import Card from "../../components/Card";
+
 import Profile from "../../components/Profile";
 import metidando from '../../assets/metidando.gif'
 type Treino = {
@@ -72,7 +72,7 @@ export default function FichaTreinoPage() {
         }
         {selectedType !== null && 
           <>
-            <h3>Treino Tipo {selectedType}</h3>
+            <h3 className="aba-left">Treino::Tipo {selectedType}</h3>
             <div className="d-flex justify-content-end">
               <button className="btn btn-warning btn-sm" onClick={() => setSelectedType(null)}>Voltar</button>
             </div>
@@ -83,9 +83,11 @@ export default function FichaTreinoPage() {
             }).map((name: any) => (
               <>
                 {treino && name != 'tipos' && treino[name].filter((item: any) => item.show && item.tipo === selectedType).length > 0 &&
-                  <Card>
+                  <>
+                    <br /><br />
                     <h4 className="">{name.toUpperCase()}</h4>
-                  </Card>
+                    <hr style={{ border: '2px solid blue' }} />
+                  </>
                 }
                 {/* {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).length <= 0 && <h5 className="text-center p-2">Sem Sequências Definidas - Fale com seu(ua) Personal</h5>} */}
                 {treino && name != 'tipos' && treino[name]
@@ -93,10 +95,40 @@ export default function FichaTreinoPage() {
                 .map((item: any, index: number) => (
                   <div className="card-treino"  key={index}>
                     <div className="text-left">
-                        <h3 className="titulo-exercicio">
-                          {item.exercicio}
-                        </h3>
-                        <h4 style={{ paddingLeft: 10, color: '#777' }}>{item.obs}</h4>
+                        <h4 className="titulo-exercicio">
+                          {
+                            [
+                              "Complementar 01", 
+                              "Complementar 02",
+                              "Complementar 03",
+                              "Complementar 04",
+                              "Complementar 05",
+                              "Complementar 06",
+                              "Complementar 07",
+                              "Complementar 08",
+                              "Complementar 09",
+                              "Complementar 10"
+                            ]
+                            .includes(item.exercicio) ? item.obs : item.exercicio}
+
+                        </h4>
+                        <h4 style={{ paddingLeft: 10, color: '#777' }}>
+                        {
+                            [
+                              "Complementar 01", 
+                              "Complementar 02",
+                              "Complementar 03",
+                              "Complementar 04",
+                              "Complementar 05",
+                              "Complementar 06",
+                              "Complementar 07",
+                              "Complementar 08",
+                              "Complementar 09",
+                              "Complementar 10"
+                            ]
+                            .includes(item.exercicio) ? null : item.obs
+                          }
+                        </h4>
                     </div>
                     <div>
                       <div className="circles">
