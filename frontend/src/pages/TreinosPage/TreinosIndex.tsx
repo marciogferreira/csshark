@@ -4,22 +4,29 @@ import lista_treinos from "./lista_treinos";
 import { useEffect, useState } from "react";
 import Crud from '../../components/Crud';
 import Message from "../../core/Message";
+import { useNavigate } from "react-router-dom";
 
 
 type Treino = {
   [key: string]: any; // As propriedades podem ser string ou number
 };
-const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
+const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) => {
    
   const[treino, setTreino] = useState<Treino>(lista_treinos);
   const[alunos, setAlunos] = useState([]);
-  
+  const navigate = useNavigate()
   async function getAlunos() {
     const response = await Api.get('alunos/options');
     setAlunos(response.data.data);
   }
 
   async function handleSubmit() {
+  
+    if(!values.aluno_id) {
+      Message.error("Por favor, selecione o Aluno!");
+      return;
+    }
+    console.log(values)
     if(values.id) {
       await Api.put(`treinos/${values.id}`, {
         aluno_id: values.aluno_id,
@@ -29,12 +36,15 @@ const FormWrapper = ({ Field, ErrorMessage, values }: any) => {
       });
       Message.success("Treino Atualizado com Sucesso.")
     } else {
-      await Api.post('treinos', {
+      const response = await Api.post('treinos', {
         aluno_id: values.aluno_id,
         data: treino,
         observacao: values.observacao
       });
       Message.success("Treino Salvo com Sucesso.")
+      console.log(response)
+      loadData();
+      setView('list');
     }
     
   }

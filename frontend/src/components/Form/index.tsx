@@ -29,6 +29,7 @@ function Form(props: any){
                         ErrorMessage={ErrorMessage} 
                         Field={Field} 
                         view={props.view} 
+                        setView={props.setView} 
                         loadFile={props.loadFile}
                         {...objects}
                         {...props}

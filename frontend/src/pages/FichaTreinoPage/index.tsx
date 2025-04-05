@@ -73,10 +73,7 @@ export default function FichaTreinoPage() {
         {selectedType !== null && 
           <>
             <h3 className="aba-left">Treino::Tipo {selectedType}</h3>
-            <div className="d-flex justify-content-end">
-              <button className="btn btn-warning btn-sm" onClick={() => setSelectedType(null)}>Voltar</button>
-            </div>
-            <br />
+            
             {Object.keys(treino).filter((name: any) => {
               return name;
               return treino.tipos[name] === selectedType;
@@ -94,7 +91,7 @@ export default function FichaTreinoPage() {
                 .filter((item: any) => item.show && item.tipo === selectedType)
                 .map((item: any, index: number) => (
                   <div className="card-treino"  key={index}>
-                    <div className="text-left">
+                    <div className="text-left"  style={{ width: '40%' }}>
                         <h4 className="titulo-exercicio">
                           {
                             [
@@ -130,7 +127,7 @@ export default function FichaTreinoPage() {
                           }
                         </h4>
                     </div>
-                    <div>
+                    <div className="" style={{ width: '60%' }}>
                       <div className="circles">
                         <span className="circle-1">{item.series}</span>
                         <span className="circle-x">X</span>

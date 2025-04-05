@@ -178,6 +178,7 @@ export default function Crud(props: any) {
                         <Form 
                             {...props}
                             view={view}
+                            setView={setView}
                             emptyObject={data} 
                             handleSubmit={handleSubmit}
                             handleCancel={handleList}

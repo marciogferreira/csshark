@@ -20,24 +20,35 @@ const DashboardPage = () => {
     <div>
       <Profile />
       <hr />
-      <div className="card-painel" onClick={() => navigate('/ficha')}>
-        <h5>Meus Treinos</h5>
-        <p>
-          Aqui você pode visualizar seu treino.
-        </p>
+      <div className="d-flex">
+        <div className="card-painel" onClick={() => navigate('/ficha')}>
+          <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." />
+          <strong>Treinos</strong>
+          <p>
+            Aqui você pode visualizar seu treino.
+          </p>
+        </div>
+
+        <div className="card-painel"  onClick={() => navigate('/aluno/modalidades')}>
+        <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." />
+          <strong>Modalidades</strong>
+          <p>
+            Aqui você pode visualizar as modadlidades do box e consegue realizar sua matrícula.
+          </p>
+        </div>
+        
       </div>
-      <div className="card-painel"  onClick={() => navigate('/aluno/modalidades')}>
-        <h5>Modalidades</h5>
-        <p>
-          Aqui você pode visualizar as modadlidades do box e consegue realizar sua matrícula.
-        </p>
+
+      <div className="d-flex">
+        <div className="card-painel"  onClick={() => navigate('/professores/equipe')}>
+        <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." />
+          <strong>Professores</strong>
+          <p>
+            Aqui você poderá conhecer toda a nossa equipe de professores.
+          </p>
+        </div>
       </div>
-      <div className="card-painel"  onClick={() => navigate('/professores/equipe')}>
-        <h5>Professores</h5>
-        <p>
-          Aqui você poderá conhecer toda a nossa equipe de professores.
-        </p>
-      </div>
+
     </div>
   );
 };
