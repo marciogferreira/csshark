@@ -72,6 +72,7 @@ export default function FichaTreinoPage() {
         }
         {selectedType !== null && 
           <>
+            <h3>Treino Tipo {selectedType}</h3>
             <div className="d-flex justify-content-end">
               <button className="btn btn-warning btn-sm" onClick={() => setSelectedType(null)}>Voltar</button>
             </div>
@@ -86,15 +87,16 @@ export default function FichaTreinoPage() {
                     <h4 className="">{name.toUpperCase()}</h4>
                   </Card>
                 }
-                {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).length <= 0 && <h5 className="text-center p-2">Sem Sequências Definidas - Fale com seu(ua) Personal</h5>}
+                {/* {treino && name != 'tipos' && treino[name].filter((item: any) => item.show).length <= 0 && <h5 className="text-center p-2">Sem Sequências Definidas - Fale com seu(ua) Personal</h5>} */}
                 {treino && name != 'tipos' && treino[name]
                 .filter((item: any) => item.show && item.tipo === selectedType)
                 .map((item: any, index: number) => (
                   <div className="card-treino"  key={index}>
-                    <div>
-                      <strong>
-                        <p className="titulo-exercicio">{item.exercicio}</p>
-                      </strong>
+                    <div className="text-left">
+                        <h3 className="titulo-exercicio">
+                          {item.exercicio}
+                        </h3>
+                        <h4 style={{ paddingLeft: 10, color: '#777' }}>{item.obs}</h4>
                     </div>
                     <div>
                       <div className="circles">
@@ -102,7 +104,6 @@ export default function FichaTreinoPage() {
                         <span className="circle-x">X</span>
                         <span className="circle-2">{item.reps}</span>
                       </div>
-                      <small>{item.obs}</small>              
                     </div>
                   </div>
                 ))}

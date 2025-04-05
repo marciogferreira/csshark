@@ -149,9 +149,9 @@ console.log(treino)
                       
                         <input
                           placeholder="Obs"
-                          type="number"
+                          type="text"
                           name="obs"
-                          className="form-control"
+                        className="form-control"
                           value={item.obs}
                           onChange={e => handleTreino(name, item.id, 'obs', e.target.value)}
                         />
