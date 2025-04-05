@@ -29,7 +29,8 @@ export default function ModalidadesAlunosPages() {
             valor: 0,
             desconto: 0,
         })
-        Message.success("Matrícula Realizada com Sucesso!")
+        Message.success("Matrícula Realizada com Sucesso. Compareça na Recepção para Confirmar sua Matrícula e Participar das aulas.")
+        getData();
     }
 
     useEffect(() => {
@@ -50,11 +51,19 @@ export default function ModalidadesAlunosPages() {
                     <div>
                         <strong>Valor: </strong>R$ {item.valor} <br />
                     </div>
+                    {item.matriculado && 
+                        <div>
+                            <strong>Data da Matrícula: </strong>{item.matriculado.data_inicio} <br />
+                        </div>
+                    }
                     </div>
                     <p>{item.descricao}</p>
 
                     {}
-                    <button onClick={() => matricular(item.id)} className="btn btn-warning btn-sm">Matricule-se</button>
+                    {item.matriculado && <h3 className="alert alert-primary">Matriculado</h3> }
+                    {!item.matriculado &&
+                        <button onClick={() => matricular(item.id)} className={`btn btn-${item.matriculado ? 'primary' : 'warning'} btn-sm`}>{item.matriculado ? 'Matriculado' : 'Matricule-se'}</button>
+                    }
                 </Card>
             ))}
         </>

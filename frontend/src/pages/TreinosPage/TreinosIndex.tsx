@@ -4,7 +4,7 @@ import lista_treinos from "./lista_treinos";
 import { useEffect, useState } from "react";
 import Crud from '../../components/Crud';
 import Message from "../../core/Message";
-import { useNavigate } from "react-router-dom";
+
 
 
 type Treino = {
@@ -14,7 +14,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
    
   const[treino, setTreino] = useState<Treino>(lista_treinos);
   const[alunos, setAlunos] = useState([]);
-  const navigate = useNavigate()
+
   async function getAlunos() {
     const response = await Api.get('alunos/options');
     setAlunos(response.data.data);
