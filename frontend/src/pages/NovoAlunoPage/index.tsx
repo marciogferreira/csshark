@@ -3,9 +3,13 @@ import * as Yup from 'yup'
 import Api from "../../core/api";
 import Message from "../../core/Message";
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import AuthContext from "../../contexts/AuthContext";
 function NovoAlunoPage() {
 
     const navigate = useNavigate();
+    const[enviando, setEnviando] = useState(false)
+    const { setLoading } = useContext(AuthContext)
     const schemaValidator = Yup.object().shape({
         nome: Yup.string().required('O nome é obrigatório'),
         email: Yup.string().required('O E-mail é obrigatório'),
@@ -34,6 +38,8 @@ function NovoAlunoPage() {
 
     async function saveForm(values: any, form: any) {
         try {
+            setLoading(true)
+            setEnviando(true)
             await Api.post('aluno/novo', values)
             Message.success("Aluno(a) Cadastrado(a) com Sucesso. \n Seja bem-vindo(a) ao Nosso Time! \n Agora dirija-se a recepção do Box para finalizar sua matrícula.")
             form.resetForm();
@@ -41,7 +47,8 @@ function NovoAlunoPage() {
         } catch (error: any) {
             console.error(error)
         } finally {
-
+            setLoading(false)
+            setEnviando(false)
         }
     }
 
@@ -246,7 +253,7 @@ function NovoAlunoPage() {
                         </div>      
 
                         <div className="d-flex justify-content-center flex-column mt-3 mb-5">
-                            <button className="btn btn-primary" onClick={() => handleSubmit()}>Finalizar Cadastro</button>     
+                            <button className="btn btn-primary" disabled={enviando} onClick={() => handleSubmit()}>Finalizar Cadastro</button>     
                             <button className="btn btn-warning mt-3" onClick={() => navigate('/login')}>Cancelar</button>     
                         </div>
                     </div>
