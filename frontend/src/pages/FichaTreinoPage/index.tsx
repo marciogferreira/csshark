@@ -57,8 +57,11 @@ export default function FichaTreinoPage() {
               Object.values(treino.tipos)
               .map((value: any) => value)
               .reduce((acc: any, value: any) => {
-                if(acc.includes(value)) return acc;
-                return [...acc, value];
+                if(acc) {
+                  if(acc.includes(value)) return acc;
+                  return [...acc, value];
+                }
+                return [value];
               })
               .sort()
               .map((value: any, index: number) => (

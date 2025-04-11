@@ -7,27 +7,26 @@ export default function Pagination(props: any) {
     //     nextButtonText: 'Próxima',
     //     prevButtonText: 'Anterior'
     // };
-    console.log(props)
+    console.log(props.data)
 
     //return null;
     return (
         <>
             <Row style={{ padding: '5px' }}>
                 <Col>
-                    <a 
-                        href="#" 
-                        className={`${props.current <= 1 ? 'disable': ''} link`}
-                        onClick={() => props.onChange(props.current - 1)}
+                    <button 
+                        className={`btn btn-primary btn-sm ${props.data.current_page <= 1 ? 'disable': ''} link`}
+                        onClick={() => props.onChange(props.data.current_page - 1)}
                         >
-                            Anterior
-                    </a>
+                        Anterior
+                    </button>
                     &nbsp;
-                    <a 
-                        href="#" 
-                        onClick={() => props.onChange(props.current + 1)}
+                    <button 
+                        className={`btn btn-primary btn-sm`}
+                        onClick={() => props.onChange(props.data.current_page + 1)}
                     >
                         Próxima
-                    </a>
+                    </button>
                 </Col>
                 <Col style={{ textAlign: 'right' }}>
                     <p>Monstrando {props.data.to || 0} de {props.data.total || 0} registros.</p>

@@ -5,6 +5,7 @@ import Message from "../../core/Message";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import AuthContext from "../../contexts/AuthContext";
+import InputMask from 'react-input-mask';
 function NovoAlunoPage() {
 
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function NovoAlunoPage() {
     const schemaValidator = Yup.object().shape({
         nome: Yup.string().required('O nome é obrigatório'),
         email: Yup.string().required('O E-mail é obrigatório'),
-        cpf: Yup.string().required('O CPF é obrigatório'),
+        cpf: Yup.string().required('O CPF é obrigatório').min(11, 'CPF Inválido.'),
         dataInicio: Yup.date().required('A data de início é obrigatória'),
         professor: Yup.string().required('O professor é obrigatório'),
         // peso: Yup.number()
@@ -89,7 +90,7 @@ function NovoAlunoPage() {
                         saveForm(values, form)
                     }}
                 >
-                  {({ handleSubmit }) => (
+                  {({ handleSubmit, values, setFieldValue }) => (
                     <div className="card p-3">
                         <div className='row'>
                             <div className="col-12 col-md-6">
@@ -108,8 +109,22 @@ function NovoAlunoPage() {
                                     </span>
                                 </div>
                                 <div className='mb-3'>
+                                    {values.cpf}
                                     <label>CPF</label>
-                                    <Field name="cpf" type="text" className="form-control" />
+                                    <InputMask 
+                                        name="cpf" 
+                                        type="text" 
+                                        className="form-control" 
+                                        mask="999.999.999-99"
+                                        value={values.cpf}
+                                        onChange={(e: any) => {
+                                            const value = e.target.value;
+                                            let cpf = value.replaceAll('.', '');
+                                            cpf = cpf.replaceAll('-', '');
+                                            cpf = cpf.replaceAll('_', '');
+                                            setFieldValue('cpf', cpf)
+                                        }}
+                                    />
                                     <span className="error" >
                                         <ErrorMessage name="cpf" component="span" />
                                     </span>

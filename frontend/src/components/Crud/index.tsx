@@ -36,8 +36,7 @@ export default function Crud(props: any) {
     const [view, setView] = useState('list');
     const [data, setData] = useState(props.emptyObject);
     const [list, setList] = useState([]);
-    // const [search, setSearch] = useState('');
-    const search = '';
+    const [search, setSearch] = useState('');
     const [paramsSearch, setParamsSearch] = useState({});
     const [pagination, setPagination] = useState({});
     const [page, setPage] = useState(1);
@@ -52,7 +51,7 @@ export default function Crud(props: any) {
         };
         
         if(props.searchFieldName && search) {
-            // params[props.searchFieldName] = search;
+            params = {...params, ...{ search: search }};
         }
         const response = await Api.get(props.endPoint, {
             params: { ...params}
@@ -142,11 +141,11 @@ export default function Crud(props: any) {
                     {view === 'list' ?
                         <Row>
                             <Col>
-                                {/* <InputSearch 
-                                    value={search} 
-                                    handleText={value => setSearch(value)} 
-                                    loadData={loadData}
-                                /> */}
+                                <div className="d-flex">
+                                    <input placeholder='Pesquisar' className='form-control  input-sm'  value={search} onChange={e => setSearch(e.target.value)}  />
+                                    &nbsp;
+                                    <Button variant='primary' size='sm' onClick={() => loadData()}>Pesquisar</Button>
+                                </div>
                             </Col>
                             <Col>
                                 {!props.enableBtnNew && <Button size="sm" style={{ float: 'right', marginBottom: '20px' }} variant="success" onClick={handleNew}>Novo</Button>}

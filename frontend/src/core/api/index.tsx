@@ -41,7 +41,7 @@ Api.interceptors.response.use(function (response) {
       }
     }
 
-    if(error.response.status === 401) {
+    if(error.response && error.response.status === 401) {
       Util.removeToken();
       Util.redirect();
     }
