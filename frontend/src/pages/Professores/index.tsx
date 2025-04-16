@@ -27,10 +27,10 @@ export default function Professores() {
             <p>Listagem dos professores</p>
             <hr />
             
-            <div className="d-flex justify-content-center flex-column">
+            <div className="row">
                 {professores.map((item: any, index: any) => (
-                    <div key={index} className="text-center mt-3 mb-3 d-flex flex-column justify-content-center">
-                        <img src={item.imagem} width="240px" className="mb-3 rounded mx-auto" alt="..." />
+                    <div key={index} className="text-center mt-3 mb-3 col-md-3 col-12" style={{ height: 440 }}>
+                        <img src={item.imagem} width="240px" height="240px" style={{ objectFit: 'cover' }} className="mb-3 rounded mx-auto" alt="..." />
                         <h3>{item.nome}</h3>
                         <hr />
                     </div>
