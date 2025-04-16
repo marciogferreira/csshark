@@ -22,8 +22,12 @@ class AlunosServices extends BaseServices {
 
         $data = $this->model->when($params, function($query, $params) {
             if(isset($params['search'])) {
-                $query->whereOr($this->columnSearch, 'like', "%{$params['search']}%");
-                $query->whereOr('cpf', 'like', "%{$params['search']}%");
+                $query->whereRaw("
+                    ({$this->columnSearch} like '%{$params['search']}%' 
+                    OR 
+                    cpf like '%{$params['search']}%'
+                    )
+                ");
             }
             return $query;
         })
