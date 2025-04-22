@@ -26,7 +26,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
       Message.error("Por favor, selecione o Aluno!");
       return;
     }
-    console.log(values)
+    
     if(values.id) {
       await Api.put(`treinos/${values.id}`, {
         aluno_id: values.aluno_id,
@@ -93,6 +93,7 @@ console.log(treino)
         name="aluno_id"
         placeholder="Selecione"
         list={alunos}
+        disabled={values.id ? true : false}
         component={Select}
         error={<ErrorMessage name="aluno_id" />}
       />
