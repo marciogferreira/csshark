@@ -5,6 +5,8 @@ use App\Models\AlunosModel;
 use App\Models\AlunosTreinosModel as Model;
 use App\Models\TreinosModel;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class AlunosTreinosServices extends BaseServices {
     
     public function __construct(Model $model)
@@ -16,7 +18,7 @@ class AlunosTreinosServices extends BaseServices {
     public function index($request) {
         $params = $request->all();
         $search = $params['search'];
-        $data = $this->model->whereHas('aluno', function($query) use ($search) {
+        $data = $this->model->whereHas('aluno', function(Builder $query) use ($search) {
             $query->where('nome', 'like', "%{$search}%");
         })
         ->when($params, function($query, $params) {
