@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', function () {
     return response()->json(['message' => 'Sessão Expirada.']);
 })->name('login');
-Route::get('treinos', 'TreinosController@index');
+
 
 Route::post('login', 'AuthController@login');
 Route::post('me', 'AuthController@me');
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('frequencias', 'FrequenciasController');
     Route::resource('alunos', 'AlunosController');
     Route::resource('modalidades', 'ModalidadesController');
-    // Route::resource('treinos', 'TreinosController');
+    Route::resource('treinos', 'TreinosController');
     Route::resource('turmas', 'TurmasController');
     Route::resource('alunos-turmas', 'AlunosTurmasController');
 
