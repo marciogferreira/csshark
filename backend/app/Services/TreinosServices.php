@@ -18,7 +18,14 @@ class TreinosServices extends BaseServices {
         $search = isset($params['search']) ? $params['search'] : '';
         
         $data = TreinosModel::whereHas('aluno', function(Builder $query) use ($search) {
-            $query->where('nome', 'like', "%{$search}%");
+            // $query->where('nome', 'like', "%{$search}%");
+            $query->whereRaw("
+                    (
+                    nome like '%{$search}%' 
+                        OR 
+                    cpf like '%{$search}%'
+                    )
+                ");
         })
         ->when($params, function($query, $params) {
             if(isset($params['search'])) {
