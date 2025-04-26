@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\AlunosModel;
 use App\Models\AlunosTreinosModel as Model;
+use App\Models\AlunosTreinosModel;
 use App\Models\TreinosModel;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -18,7 +19,7 @@ class AlunosTreinosServices extends BaseServices {
     public function index($request) {
         $params = $request->all();
         $search = $params['search'];
-        $data = $this->model->whereHas('aluno', function(Builder $query) use ($search) {
+        $data = AlunosTreinosModel::with('user')->whereHas('aluno', function(Builder $query) use ($search) {
             $query->where('nome', 'like', "%{$search}%");
         })
         ->when($params, function($query, $params) {
