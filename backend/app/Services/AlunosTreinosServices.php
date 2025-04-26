@@ -17,7 +17,7 @@ class AlunosTreinosServices extends BaseServices {
         $params = $request->all();
         $search = $params['search'];
         $data = $this->model->whereHas('aluno', function($query) use ($search) {
-            return $query->where('nome', 'like', "%{$search}%");
+            $query->where('nome', 'like', "%{$search}%");
         })
         ->when($params, function($query, $params) {
             if(isset($params['search'])) {
