@@ -15,16 +15,15 @@ class AlunosTreinosServices extends BaseServices {
 
     public function index($request) {
         $params = $request->all();
-
+        $search = $params['search'];
         $data = $this->model->when($params, function($query, $params) {
             if(isset($params['search'])) {
                 $query->where($this->columnSearch, 'like', "%{$params['search']}%");
             }
-
             return $query;
         })
-        ->whereHas('aluno', function($query, $params) {
-            return $query->where('nome', 'like', "%{$params['search']}%");
+        ->whereHas('aluno', function($query) use ($search) {
+            return $query->where('nome', 'like', "%{$search}%");
         })
         ->when($this->orderBy, function($query, $orderBy) {
             if($orderBy === 'desc') {
