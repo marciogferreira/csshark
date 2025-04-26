@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 // use NumberFormatter;
 
 Route::get('/', function() {
+
+
     return view('welcome');
 });
 

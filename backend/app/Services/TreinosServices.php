@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Models\TreinosModel as Model;
 use App\Models\TreinosModel;
-
+use Illuminate\Database\Eloquent\Builder;
 class TreinosServices extends BaseServices {
     
     public function __construct(Model $model)
@@ -15,7 +15,10 @@ class TreinosServices extends BaseServices {
     public function index($request) {
         $params = $request->all();
 
-        $data = $this->model->when($params, function($query, $params) {
+        $search = isset($params['search']) ? $params['search'] : '';
+        $data = $this->model::with('aluno')->whereHas('aluno', function(Builder $query) use ($search) {
+            $query->where('nome', 'like', "%{$search}%");
+        })->when($params, function($query, $params) {
             if(isset($params['search'])) {
                 $query->where($this->columnSearch, 'like', "%{$params['search']}%");
             }
