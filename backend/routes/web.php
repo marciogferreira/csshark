@@ -11,6 +11,7 @@ use App\Models\EstoqueProducao;
 use App\Models\ProdutoMontagem;
 use App\Models\TabelaPreco;
 use App\Models\StatusProducao;
+use App\Models\TreinosModel;
 use App\Services\Relatorios\OrdemProducaoStatusRelatorios;
 use App\Services\Relatorios\PedidosProducaoRelatorios;
 use App\Services\NegociosServices;
@@ -18,6 +19,7 @@ use App\Services\OrdemProducaoNegocios;
 
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
 
+    $search = 'Max';
+    $data = TreinosModel::with('aluno')->whereHas('aluno', function(Builder $query) use ($search) {
+        $query->where('nome', 'like', "%{$search}%");
+    })->paginate(10);
+
+    return response()->json($data);
 
     return view('welcome');
 });
