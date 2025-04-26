@@ -28,10 +28,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function() {
 
     $search = 'Max';
-    $data = TreinosModel::with('aluno')->whereHas('aluno', function(Builder $query) use ($search) {
-        $query->where('nome', 'like', "%{$search}%");
-    })->paginate(10);
-
+    // $data = TreinosModel::with('aluno')->whereHas('aluno', function(Builder $query) use ($search) {
+    //     $query->where('nome', 'like', "%{$search}%");
+    // })->paginate(10);
+    $this->orderBy = '';
+    $params = [];
+    $search = isset($params['search']) ? $params['search'] : '';
+        $data = TreinosModel::with('aluno')
+        ->whereHas('aluno', function(Builder $query) use ($search) {
+            $query->where('nome', 'like', "%{$search}%");
+        })
+        ->when($params, function($query, $params) {
+            if(isset($params['search'])) {
+                $query->where($this->columnSearch, 'like', "%{$params['search']}%");
+            }
+            return $query;
+        })
+        ->when($this->orderBy, function($query, $orderBy) {
+            if($orderBy === 'desc') {
+                return $query->orderBy('id', 'desc');
+            }
+        })
+        ->paginate(10);
     return response()->json($data);
 
     return view('welcome');
