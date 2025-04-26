@@ -37,11 +37,10 @@ function Profile() {
 
     return (
         <>
-            <p>
+            <h3>
                 Olá, <strong>{user.name}</strong>
-                <br />
-                {formatarData(dataHora)}
-            </p>
+            </h3>
+            <p>{formatarData(dataHora)}</p>
         </>
     )
 }

@@ -205,7 +205,8 @@ export default function AlunosIndex() {
                 { name: 'nome', label: 'Nome' },
                 { name: 'cpf', label: 'CPF' },
                 { name: 'email', label: 'E-mail' },
-                { name: 'telefone', label: 'Telefone' }
+                { name: 'telefone', label: 'Telefone' },
+                { name: 'telefone', label: 'Ações' }
             ]}
             validation={(Yup: object | any) => {
                 return {

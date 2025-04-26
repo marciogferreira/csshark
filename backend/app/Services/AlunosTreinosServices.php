@@ -20,7 +20,11 @@ class AlunosTreinosServices extends BaseServices {
             if(isset($params['search'])) {
                 $query->where($this->columnSearch, 'like', "%{$params['search']}%");
             }
+
             return $query;
+        })
+        ->whereHas('aluno', function($query, $params) {
+            return $query->where('nome', 'like', "%{$params['search']}%");
         })
         ->when($this->orderBy, function($query, $orderBy) {
             if($orderBy === 'desc') {
