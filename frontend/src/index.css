@@ -4,42 +4,41 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+}
   
-  .header {
-    background-color: #073350;
-    color: white;
-  }
-  .header i {
-    color: white;
-  }
-  .sidebar {
-    background-color: #073350;
-    color: white;
-  }
-  
-  .card {
-    background-color: white;
-    border-radius: 8px;
-  }
-  
-  .error {
-    color: red !important;
-  }
+.header {
+  background-color: #073350;
+  color: white;
+}
+.header i {
+  color: white;
+}
+.sidebar {
+  background-color: #073350;
+  color: white;
+}
 
-  #login-page {
-    height: 100vh;
-    background-color: #073350;
-    background-image: url('./assets/karyna.png');
-  }
+.card {
+  background-color: white;
+  border-radius: 8px;
+}
 
-  .navbar {
-    background-color: #87CEFA;
-  }
+.error {
+  color: red !important;
+}
+
+#login-page {
+  height: 100vh;
+  background-color: #073350;
+  background-image: url('./assets/karyna.png');
+}
+
+.navbar {
+  background-color: #87CEFA;
+}
 
 i {
   font-size: 2em;
@@ -67,6 +66,7 @@ i {
   text-decoration: none;
   font-size: 1.4em;
 }
+
 @keyframes showDrawer {
   from {
     left: -85%;
@@ -75,6 +75,7 @@ i {
     left: 0;
   }
 }
+
 .drawer-show {
   display: block;
   position: fixed;
@@ -87,6 +88,7 @@ i {
   color: white;
   animation: showDrawer 200ms;
 }
+
 @keyframes hideDrawer {
   from {
     left: 0%;
@@ -95,6 +97,7 @@ i {
     left: -85%  ;
   }
 }
+
 .drawer-hide {
   display: block;
   position: fixed;
@@ -124,12 +127,12 @@ i {
 }
 /* treinos */
 .titulo-treino {
-  
   color: #073350;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
 }
+
 .aba-left {
   background-color: #073350;
   color: white;
@@ -139,9 +142,9 @@ i {
   position: relative;
   left: -30px;
 }
+
 .card-treino {
   display: flex;
-  
   align-items: center;
   justify-content: space-between;
   background-color: #f7f7f7;
@@ -151,19 +154,21 @@ i {
   border-radius: 10px;
   text-align: center;
 }
+
 .titulo-exercicio {
   background-color: #f7f7f7;
   color: #444;
   padding: 10px;
   border-radius: 10px;
-  
 }
+
 .circles {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
+
 .circle-x {
   font-size: 2em;
   padding: 20px;

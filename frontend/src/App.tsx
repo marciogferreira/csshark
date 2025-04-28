@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import AppRoutes from "./routes/AppRoutes";
 import logo from './assets/logo.png'
 import burppe from './assets/burpee.gif'

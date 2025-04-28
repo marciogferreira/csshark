@@ -215,6 +215,18 @@ export default function AlunosIndex() {
                 frequenciaSemanal: '',
                 objetivo: '',
             }}
+            FormSearch={({ params, setParams }: any) =>(
+                <div className='row'>
+                    <div className="col-md-3">
+                        <label htmlFor="">Status</label>
+                        <select onChange={e => setParams({...params, ...{ status: e.target.value }})} className='form-control'>
+                            <option value="">Selecione</option>
+                            <option value="true">Ativos</option>
+                            <option value="false">Inativos</option>
+                        </select>
+                    </div>
+                </div>
+            )}
             fields={[
                 { name: 'id', label: 'Id', classBody: 'min-width' },
                 { name: 'nome', label: 'Nome' },
@@ -234,7 +246,7 @@ export default function AlunosIndex() {
                     <Form.Check // prettier-ignore
                         type="switch"
                         id="custom-switch"
-                        label="Ativo"
+                        label="Status"
                     />
                     </td>
                 </>

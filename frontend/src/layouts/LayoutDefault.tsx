@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom"
 import Menu from "./Menu"
 import { IconButton } from "@material-tailwind/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid"
+// import MenuDesktop from "./MenuDesktop"
 
 type DataProps = {
     children: React.ReactNode | null
@@ -26,10 +27,9 @@ export default function LayoutDefault({ children }: DataProps) {
     return (
         <>
           <div className="wrapper">
+            {/* <MenuDesktop /> */}
             <header style={{  }} className="flex pl-3 items-center bg-blue-950">
-              
               <div>
-                
                   <>
                     <IconButton variant="text" size="lg" onClick={openDrawer} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                       <>
@@ -41,8 +41,6 @@ export default function LayoutDefault({ children }: DataProps) {
                       </>
                     </IconButton>
                   </>
-                
-                
               </div>
               <div className="text-white">
                 <strong>CS SHARK</strong>
