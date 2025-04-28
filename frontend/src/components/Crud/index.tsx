@@ -142,7 +142,13 @@ export default function Crud(props: any) {
                         <Row>
                             <Col>
                                 <div className="d-flex">
-                                    <input placeholder='Pesquisar' className='form-control  input-sm'  value={search} onChange={e => setSearch(e.target.value)}  />
+                                    <input 
+                                        
+                                        className='form-control input-sm' 
+                                        value={search} 
+                                        onChange={e => setSearch(e.target.value)}  
+                                        placeholder={props.placeholderSearch || 'Pesquisar'}
+                                    />
                                     &nbsp;
                                     <Button variant='primary' size='sm' onClick={() => loadData()}>Pesquisar</Button>
                                 </div>

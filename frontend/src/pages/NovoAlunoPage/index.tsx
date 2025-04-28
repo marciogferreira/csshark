@@ -164,7 +164,17 @@ function NovoAlunoPage() {
 
                                 <div className='mb-3'>
                                     <label>Telefone</label>
-                                    <Field name="esquerdo" type="text" className="form-control" />
+                                    <InputMask 
+                                        name="esquerdo" 
+                                        type="text" 
+                                        className="form-control" 
+                                        mask="(99) 99999.9999"
+                                        value={values.esquerdo}
+                                        onChange={(e: any) => {
+                                            const value = e.target.value;
+                                            setFieldValue('esquerdo', value)
+                                        }}
+                                    />
                                     <span className="error" >
                                         <ErrorMessage name="esquerdo"  className="error" />
                                     </span>

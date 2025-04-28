@@ -1,11 +1,15 @@
+import ReactInputMask from 'react-input-mask';
 import Crud from '../../components/Crud';
 import { ReactElement } from 'react';
+import { Form } from 'react-bootstrap';
 
 type DataProps = {
   Field: ReactElement | any;
   ErrorMessage: ReactElement | any;
+  values: any;
+  setFieldValue: (name: string, value: any) => void
 }
-const FormWrapper = ({ Field, ErrorMessage }: DataProps) => {
+const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) => {
    
     return (
         <>
@@ -66,8 +70,18 @@ const FormWrapper = ({ Field, ErrorMessage }: DataProps) => {
                     </div>
 
                     <div className='mb-3'>
-                        <label>Esquerdo</label>
-                        <Field name="esquerdo" type="text" className="form-control" />
+                        <label>Telefone</label>
+                          <ReactInputMask 
+                                name="esquerdo" 
+                                type="text" 
+                                className="form-control" 
+                                mask="(99) 99999.9999"
+                                value={values.esquerdo}
+                                onChange={(e: any) => {
+                                    const value = e.target.value;
+                                    setFieldValue('esquerdo', value)
+                                }}
+                            />
                         <span className="error" >
                             <ErrorMessage name="esquerdo"  className="error" />
                         </span>
@@ -179,6 +193,7 @@ export default function AlunosIndex() {
             title="Alunos"
             endPoint="alunos"
             searchFieldName='search'
+            placeholderSearch="Pesquise por Nome ou CPF"
             emptyObject={{
                 nome: '',
                 email: '',
@@ -205,9 +220,25 @@ export default function AlunosIndex() {
                 { name: 'nome', label: 'Nome' },
                 { name: 'cpf', label: 'CPF' },
                 { name: 'email', label: 'E-mail' },
-                { name: 'telefone', label: 'Telefone' },
-                { name: 'telefone', label: 'Ações' }
+                { name: 'esquerdo', label: 'Telefone' },
+                { name: 'esquerdo', label: 'Ações' },
             ]}
+            fieldsHtml={({ item } : any) => (
+                <>
+                    <td>{item.id}</td>
+                    <td>{item.nome}</td>
+                    <td>{item.cpf}</td>
+                    <td>{item.email}</td>
+                    <td>{item.esquerdo}</td>
+                    <td>
+                    <Form.Check // prettier-ignore
+                        type="switch"
+                        id="custom-switch"
+                        label="Ativo"
+                    />
+                    </td>
+                </>
+            )}
             validation={(Yup: object | any) => {
                 return {
                    nome: Yup.string().required('O nome é obrigatório'),
