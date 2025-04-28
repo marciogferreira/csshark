@@ -28,7 +28,10 @@ class AlunosModel extends Model
         'estadoAtivo',
         'modalidade',
         'frequenciaSemanal',
-        'objetivo'
+        'objetivo',
+
+        'status',
+        'data_ultima_ativacao'
     ];
 
     public function treino() {
