@@ -2,6 +2,7 @@ import ReactInputMask from 'react-input-mask';
 import Crud from '../../components/Crud';
 import { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
+import Api from '../../core/api';
 
 type DataProps = {
   Field: ReactElement | any;
@@ -235,22 +236,40 @@ export default function AlunosIndex() {
                 { name: 'esquerdo', label: 'Telefone' },
                 { name: 'esquerdo', label: 'Ações' },
             ]}
-            fieldsHtml={({ item } : any) => (
-                <>
-                    <td>{item.id}</td>
-                    <td>{item.nome}</td>
-                    <td>{item.cpf}</td>
-                    <td>{item.email}</td>
-                    <td>{item.esquerdo}</td>
-                    <td>
-                    <Form.Check // prettier-ignore
-                        type="switch"
-                        id="custom-switch"
-                        label="Status"
-                    />
-                    </td>
-                </>
-            )}
+            fieldsHtml={({ item, setList } : any) => {
+                async function updateStatus(id: number, status: boolean) {
+                    await Api.put(`alunos/${id}`, {
+                        status
+                    });
+                    setList((prevList: any) => {
+                        return prevList.map((item: any) => {
+                            if(item.id === id) {
+                                item.status = status;
+                            }
+                            return item;
+                        });
+                    })
+                }
+
+                return (
+                    <>
+                        <td>{item.id}</td>
+                        <td>{item.nome}</td>
+                        <td>{item.cpf}</td>
+                        <td>{item.email}</td>
+                        <td>{item.esquerdo}</td>
+                        <td>
+                        <Form.Check // prettier-ignore
+                            type="switch"
+                            id="custom-switch"
+                            label="Status"
+                            checked={item.status}
+                            onChange={e => updateStatus(item.id, e.target.checked)}
+                        />
+                        </td>
+                    </>
+                )
+            }}
             validation={(Yup: object | any) => {
                 return {
                    nome: Yup.string().required('O nome é obrigatório'),

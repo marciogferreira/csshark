@@ -4,6 +4,9 @@ import lista_treinos from "./lista_treinos";
 import { useEffect, useState } from "react";
 import Crud from '../../components/Crud';
 import Message from "../../core/Message";
+import { FaPrint } from "react-icons/fa";
+import { Button, Modal } from "react-bootstrap";
+import Print from "../FichaTreinoPage/Print";
 
 
 
@@ -204,11 +207,35 @@ console.log(treino)
 }
 
 export default function TreinosIndex() {
+    const [alunoId, setAlunoId] = useState<number | null>(null);
+
+    async function printTreino(id: number) {
+      setAlunoId(id)
+    }
+
     return (
+      <>
+        <Modal show={alunoId != null ? true : false} onHide={() => setAlunoId(null)}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                <h5>Impressão de Treino</h5>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Print aluno_id={alunoId} />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" size="sm" onClick={() => setAlunoId(null)}>
+                Fechar
+              </Button>
+            </Modal.Footer>
+          </Modal>
         <Crud
+            placeholderSearch="Pesquise pelo Nome ou CPF"
             title="Treinos de Alunos"
             endPoint="treinos"
             searchFieldName='search'
+            printTreino={printTreino}
             emptyObject={{
                 nome: '',
                 aluno_id: '',
@@ -221,13 +248,20 @@ export default function TreinosIndex() {
                 { name: 'nome', label: 'Nome' },
                 { name: 'cpf', label: 'CPF' }
             ]}
-            fieldsHtml={({ item } : any) => (
-              <>
+            fieldsHtml={({ item, printTreino } : any) => {
+              return (
+                <>
                   <td>{item.id}</td>
                   <td>{item.aluno.nome}</td>
                   <td>{item.aluno.cpf}</td>
-              </>
-          )}
+                  <td>
+                    <button onClick={() => printTreino(item.id)}  className="btn btn-primary btn-sm">
+                      <FaPrint />
+                    </button>
+                  </td>
+                </>
+              )
+            }}
             validation={(Yup: object | any) => {
                 return {
                    nome: Yup.string().required('O nome é obrigatório')
@@ -249,5 +283,7 @@ export default function TreinosIndex() {
             showViewHistory={false}
             showViewAlterStatus={false}        
           />
+        </>
     );
 }
+

@@ -101,9 +101,9 @@ export default function Crud(props: any) {
     }
 
     function handleList(item: any) {
-        console.log(item)
         setView('list');
-        loadData();        
+        loadData();     
+        console.log(item)   
     }
 
    
@@ -170,6 +170,7 @@ export default function Crud(props: any) {
                                     throw new Error('Function not implemented.');
                                 } } {...props}
                                 list={list}
+                                setList={setList}
                                 handleEdit={handleEdit}
                                 handleDelete={handleDelete}
                             />
