@@ -78,5 +78,13 @@ class AlunosTreinosServices extends BaseServices {
         return response()->json([]);
         
     }
+
+    public function fichaByAlunoId($id) {
+        $treino = TreinosModel::where('aluno_id', $id)->first();
+        return response()->json($treino);
+        return response()->json([]);
+        
+    }
+    
     
 }

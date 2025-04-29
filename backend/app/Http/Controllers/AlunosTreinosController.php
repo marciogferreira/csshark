@@ -15,4 +15,8 @@ class AlunosTreinosController extends ApiController {
     public function fichaByAluno($email) {
         return $this->services->fichaByAluno($email);
     }
+
+    public function fichaByAlunoId($aluno_id) {
+        return $this->services->fichaByAlunoId($aluno_id);
+    }
 }

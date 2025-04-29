@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Crud Rest API
     Route::get('dashboard/totais', "DashboardController@totais");
     Route::get('ficha-aluno/{email}', "AlunosTreinosController@fichaByAluno");
+    Route::get('ficha-aluno-id/{aluno_id}', "AlunosTreinosController@fichaByAlunoId");
     
     Route::resource('users', 'UsersController');
     Route::resource('colaborador', 'ColaboradorController');
