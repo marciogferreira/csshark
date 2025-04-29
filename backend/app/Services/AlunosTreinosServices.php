@@ -81,6 +81,7 @@ class AlunosTreinosServices extends BaseServices {
 
     public function fichaByAlunoId($id) {
         $treino = TreinosModel::where('aluno_id', $id)->first();
+        $treino->aluno;
         return response()->json($treino);
         return response()->json([]);
         
