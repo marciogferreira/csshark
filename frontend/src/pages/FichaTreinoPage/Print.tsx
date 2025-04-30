@@ -60,7 +60,7 @@ export default function Print({ aluno_id }: any) {
             <Button variant="primary" size="sm" onClick={imprimir}>
                 Imprimir
             </Button>
-            <div ref={divRef} id="print" style={{ width: '200px', padding: '10px', background: '#f7f4c0' }}>
+            <div ref={divRef} id="print" style={{ width: '100%', padding: '10px', background: '#f7f4c0' }}>
             {!status ? 
                 <div className="d-flex justify-content-center flex-column">
                     <img src={metidando} alt="" />
