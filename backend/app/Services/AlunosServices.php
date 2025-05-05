@@ -72,7 +72,7 @@ class AlunosServices extends BaseServices {
                 $params['id'] = $id;
             }
             $params['model'] = $data;
-            $params['data_ultima_ativacao'] = Carbon::now('Y-m-d')->setTimezone('America/Sao_Paulo');
+            $params['data_ultima_ativacao'] = Carbon::now()->format('Y-m-d');
             $params = $this->beforeUpdateData($params);
             // $params = $this->update($params);
             $data->update($params);
