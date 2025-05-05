@@ -238,7 +238,7 @@ export default function AlunosIndex() {
             ]}
             fieldsHtml={({ item, setList } : any) => {
                 async function updateStatus(id: number, status: boolean) {
-                    await Api.put(`alunos/${id}`, {
+                    await Api.put(`alunos-status/${id}`, {
                         status
                     });
                     setList((prevList: any) => {

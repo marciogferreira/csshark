@@ -2,7 +2,9 @@
 namespace App\Services;
 
 use App\Models\AlunosModel as Model;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class AlunosServices extends BaseServices {
     
@@ -51,6 +53,36 @@ class AlunosServices extends BaseServices {
             $data['senha'] = md5($data['cpf']);
         }
         return $data;
+    }
+
+    
+    public function updateStatus($request, $id) {
+        try {
+            DB::beginTransaction();
+            if($this->validator) {
+                $validator = $this->validator->validation($request);
+                if($validator->fails()){
+                    return $this->response(['validation' => $validator->errors()], 422);
+                }
+            }
+            $params = $request->all();
+            $this->params = $params;
+            $data = $this->model->find($id);
+            if(!isset($params['id'])) {
+                $params['id'] = $id;
+            }
+            $params['model'] = $data;
+            $params['data_ultima_ativacao'] = Carbon::now('Y-m-d');
+            $params = $this->beforeUpdateData($params);
+            // $params = $this->update($params);
+            $data->update($params);
+            $this->afterUpdateData($data);
+            DB::commit();
+            return $this->response(['message' => 'Registro Atualizado com Sucesso']);
+        } catch(Exception $e) {
+            DB::rollBack();
+            return $this->response(['message' => $e->getMessage(). ' Código: '.$e->getLine()], 500);
+        }
     }
 
 
