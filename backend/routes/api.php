@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/relatorios', 'RelatoriosController@index');    
     
     // Options
-    Route::put('alunos-status', 'AlunosController@updateStatus');
+    Route::put('alunos-status/{id}', 'AlunosController@updateStatus');
     Route::get('alunos/options', "AlunosController@options");  
     Route::get('modalidades/options', "ModalidadesController@options");  
     Route::get('turmas/options', "TurmasController@options");  
