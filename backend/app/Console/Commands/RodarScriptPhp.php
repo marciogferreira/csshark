@@ -41,12 +41,14 @@ class RodarScriptPhp extends Command
     {
 
         $alunos = AlunosModel::whereNull('data_ultima_ativacao')->get();
+        echo " Verificações de Preenchimento: ".$alunos->count();
         foreach($alunos as $aluno) {
             $aluno->data_ultima_ativacao = $aluno->crated_at->format('Y-m-d');
             $aluno->save();
         }
 
         $alunos = AlunosModel::whereNotNull('data_ultima_ativacao')->get();
+        echo " Verificações de Validade: ".$alunos->count();
         foreach($alunos as $aluno) {
             $dataHoje = Carbon::now()->format('Y-m-d');
             $dataRegistro = Carbon::parse($aluno->data_ultima_ativacao)->addMonth(1)->format('Y-m-d');
@@ -56,6 +58,6 @@ class RodarScriptPhp extends Command
             $aluno->save();
         }
 
-        return 0;
+        
     }
 }
