@@ -202,8 +202,8 @@ export default function ModelosTreinosIndex() {
             </Modal.Footer>
           </Modal>
         <Crud
-            placeholderSearch="Pesquise pelo Nome ou CPF"
-            title="Treinos de Alunos"
+            placeholderSearch="Pesquise pelo Nome"
+            title="Modelos de Treinos"
             endPoint="modelos-treinos"
             searchFieldName='search'
             printTreino={printTreino}
