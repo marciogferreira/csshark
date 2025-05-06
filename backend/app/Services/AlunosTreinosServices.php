@@ -72,6 +72,12 @@ class AlunosTreinosServices extends BaseServices {
     public function fichaByAluno($cpf) {
         $aluno = AlunosModel::where('cpf', $cpf)->first();
         if($aluno) {
+            
+            if(!$aluno->data_ultima_ativacao) {
+                $aluno->data_ultima_ativacao = $aluno->created_at->format('Y-m-d');
+                $aluno->save();
+            }
+
             $treino = TreinosModel::where('aluno_id', $aluno->id)->first();
             return response()->json($treino);
         }

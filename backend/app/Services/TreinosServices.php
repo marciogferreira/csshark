@@ -49,13 +49,7 @@ class TreinosServices extends BaseServices {
 
     public function show($id) {
         $data = $this->model->find($id);
-        if($data && $data->aluno) {
-            if(!$data->aluno->data_ultima_ativacao) {
-                $aluno = AlunosModel::find($data->aluno->id);
-                $aluno->data_ultima_ativacao = $aluno->created_at->format('Y-m-d');
-                $aluno->save();
-            }
-        }
+        
         return response()->json(['data' => $data]);
     }
 
