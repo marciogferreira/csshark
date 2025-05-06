@@ -203,7 +203,7 @@ export default function ModelosTreinosIndex() {
         <Crud
             placeholderSearch="Pesquise pelo Nome ou CPF"
             title="Treinos de Alunos"
-            endPoint="modelos=treinos"
+            endPoint="modelos-treinos"
             searchFieldName='search'
             printTreino={printTreino}
             emptyObject={{
