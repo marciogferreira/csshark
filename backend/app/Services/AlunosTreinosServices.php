@@ -5,7 +5,7 @@ use App\Models\AlunosModel;
 use App\Models\AlunosTreinosModel as Model;
 use App\Models\AlunosTreinosModel;
 use App\Models\TreinosModel;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 
 class AlunosTreinosServices extends BaseServices {
@@ -76,6 +76,15 @@ class AlunosTreinosServices extends BaseServices {
             if(!$aluno->data_ultima_ativacao) {
                 $aluno->data_ultima_ativacao = $aluno->created_at->format('Y-m-d');
                 $aluno->save();
+            }
+
+            if($aluno->data_ultima_ativacao) {
+                $dataHoje = Carbon::now()->format('Y-m-d');
+                $dataUltimoStatus = Carbon::parse($aluno->data_ultima_ativacao)->addMonth(1)->format('Y-m-d');
+                if($dataHoje > $dataUltimoStatus) {
+                    $aluno->status = false;
+                    $aluno->save();
+                }
             }
 
             $treino = TreinosModel::where('aluno_id', $aluno->id)->first();
