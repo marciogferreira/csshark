@@ -178,25 +178,25 @@ console.log(treino)
 }
 
 export default function ModelosTreinosIndex() {
-    const [alunoId, setAlunoId] = useState<number | null>(null);
+    const [modeloTreinoId, setModeloTreinoId] = useState<number | null>(null);
 
     async function printTreino(id: number) {
-      setAlunoId(id)
+      setModeloTreinoId(id)
     }
 
     return (
       <>
-        <Modal show={alunoId != null ? true : false} onHide={() => setAlunoId(null)}>
+        <Modal show={modeloTreinoId != null ? true : false} onHide={() => setModeloTreinoId(null)}>
             <Modal.Header closeButton>
               <Modal.Title>
                 <h5>Impressão de Treino</h5>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Print aluno_id={alunoId} />
+              <Print aluno_id={null} modeloTreinoId={modeloTreinoId} />
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" size="sm" onClick={() => setAlunoId(null)}>
+              <Button variant="secondary" size="sm" onClick={() => setModeloTreinoId(null)}>
                 Fechar
               </Button>
             </Modal.Footer>

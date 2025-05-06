@@ -86,7 +86,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
       setTreino({...treino, ...dataJson});
     }
   }, [])
-console.log(treino)
+  
   return (
     <>
       <Field

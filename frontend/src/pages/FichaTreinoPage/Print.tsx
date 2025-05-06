@@ -12,7 +12,7 @@ interface AlunoData {
     nome: ''
 }
 
-export default function Print({ aluno_id }: any) {
+export default function Print({ aluno_id, modeloTreinoId }: any) {
     
     const { setLoading } = useContext(AuthContext);
     
@@ -24,13 +24,26 @@ export default function Print({ aluno_id }: any) {
     async function getTreino() {
       try {
         setLoading(true);
-        const response = await Api.get(`ficha-aluno-id/${aluno_id}`);
-        setTreino({...treino, ...JSON.parse(response.data.data)});
-        
-        if(response.data.data) {
-            setAluno(response.data.aluno);
-            setStatus('successo');
+        if(aluno_id) {
+            const response = await Api.get(`ficha-aluno-id/${aluno_id}`);
+            setTreino({...treino, ...JSON.parse(response.data.data)});    
+            if(response.data.data) {
+                setAluno(response.data.aluno);
+                setStatus('successo');
+            }
+        } 
+
+        if(modeloTreinoId) {
+            const response = await Api.get(`modelos-treinos/${modeloTreinoId}`);
+            console.log(response.data.data.nome)
+            setTreino({...treino, ...JSON.parse(response.data.data.data)});    
+            if(response.data.data) {
+                setAluno({ nome: response.data.data.nome });
+                setStatus('successo');
+            }
         }
+        
+      
       } catch(e) {
         
       } finally {
@@ -71,7 +84,10 @@ export default function Print({ aluno_id }: any) {
             <>  
                 <strong><p style={{ textAlign: "center" }}>CShark</p></strong>
                 <p style={{ fontSize: '10px' }}>
-                    <strong>Aluno: </strong>
+                    <strong>
+                        {modeloTreinoId && 'Modelo: '}
+                        {aluno_id && 'Aluno: '}
+                    </strong>
                     <br /> {aluno.nome || ''}
                 </p>
                 <small style={{ fontSize: '10px' }}>
