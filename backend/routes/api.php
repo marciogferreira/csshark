@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('alunos', 'AlunosController');
     Route::resource('modalidades', 'ModalidadesController');
     Route::resource('treinos', 'TreinosController');
+    Route::resource('modelos-treinos', 'ModelosTreinosController');
     Route::resource('turmas', 'TurmasController');
     Route::resource('alunos-turmas', 'AlunosTurmasController');
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\AlunosModel;
 use App\Models\TreinosModel as Model;
 use App\Models\TreinosModel;
 use Illuminate\Database\Eloquent\Builder;
@@ -44,6 +45,18 @@ class TreinosServices extends BaseServices {
             $item->aluno;
         }
         return $this->response($data);
+    }
+
+    public function show($id) {
+        $data = $this->model->find($id);
+        if($data && $data->aluno) {
+            if(!$data->aluno->data_ultima_ativacao) {
+                $aluno = AlunosModel::find($data->aluno->id);
+                $aluno->data_ultima_ativacao = $aluno->created_at->format('Y-m-d');
+                $aluno->save();
+            }
+        }
+        return response()->json(['data' => $data]);
     }
 
     public function beforeCreateData($params) {
