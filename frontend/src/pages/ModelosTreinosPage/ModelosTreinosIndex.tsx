@@ -68,6 +68,7 @@ console.log(treino)
         required
         id="nome"
         name="nome"
+        className="form-control"
         error={<ErrorMessage name="nome" />}
       />
       <br />
