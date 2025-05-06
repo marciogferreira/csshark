@@ -16,7 +16,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
 
   async function handleSubmit() {    
     if(values.id) {
-      await Api.put(`treinos/${values.id}`, {
+      await Api.put(`modelos-treinos/${values.id}`, {
         nome: values.nome,
         treino_id: values.treino_id,
         data: treino,
@@ -24,7 +24,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
       });
       Message.success("Modelo de Treino Atualizado com Sucesso.")
     } else {
-      const response = await Api.post('treinos', {
+      const response = await Api.post('modelos-treinos', {
         nome: values.nome,
         data: treino,
         observacao: values.observacao
