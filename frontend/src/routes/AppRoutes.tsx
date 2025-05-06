@@ -18,6 +18,7 @@ import FichaTreinoPage from "../pages/FichaTreinoPage";
 import NovoAlunoPage from "../pages/NovoAlunoPage";
 import ModalidadesAlunosPages from "../pages/ModalidadesAlunosPage";
 import Professores from "../pages/Professores";
+import ModelosTreinosIndex from "../pages/ModelosTreinosPage/ModelosTreinosIndex";
 
 export default function AppRoutes() {
 
@@ -41,6 +42,7 @@ export default function AppRoutes() {
           <Route path="/professores" element={getLayout(<ProfessoresIndex />)} />
           <Route path="/modalidades" element={getLayout(<ModalidadesIndex />)} />
           <Route path="/treinos" element={getLayout(<TreinosIndex />)} />
+          <Route path="/modelos-treinos" element={getLayout(<ModelosTreinosIndex />)} />
           <Route path="/turmas" element={getLayout(<TurmasIndex />)} />
           <Route path="/matriculas" element={getLayout(<AlunosTurmasIndex />)} />
           <Route path="/treinos-alunos" element={getLayout(<AlunosTreinosIndex />)} />           

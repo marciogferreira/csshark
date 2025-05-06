@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import AuthContext from '../contexts/AuthContext';
 
 // export default function MenuDesktop() {
 //     return (
@@ -36,6 +38,9 @@ import { Link } from 'react-router-dom';
 // }
 
 const MenuDesktop = () => {
+
+    const { handleLogout } = useContext(AuthContext); 
+
   return (
     <Navbar bg="" expand="lg" style={{ background: '#1e97db' }}>
       <div className='container justify-content-start' style={{ display: 'flex' }}>
@@ -57,11 +62,12 @@ const MenuDesktop = () => {
                     <Link className='dropdown-item' to="/alunos">Alunos</Link>
                     <Link className='dropdown-item' to="/professores">Professores</Link>                    
                     <Link className='dropdown-item' to="/modalidades">Modalidades</Link>
-                    <Link className='dropdown-item' to="/treinos">Treinos</Link>                    
+                    <Link className='dropdown-item' to="/produtos">Produtos</Link> 
                   </Col>
                   <Col>
+                    <Link className='dropdown-item' to="/treinos">Treinos</Link>                    
+                    <Link className='dropdown-item' to="/modelos-treinos">Modelos de Treinos</Link>                    
                     <Link className='dropdown-item' to="/turmas">Turmas</Link>     
-                    <Link className='dropdown-item' to="/produtos">Produtos</Link>                                   
                   </Col>
                 </Row>
               </Container>
@@ -109,7 +115,7 @@ const MenuDesktop = () => {
               </Container>
             </NavDropdown>
 
-            <Nav.Link href="#contato">Contato</Nav.Link>
+            <Nav.Link href="#" onClick={() => handleLogout()}>Sair</Nav.Link>
           </Nav>
         </Navbar>
       </div>
