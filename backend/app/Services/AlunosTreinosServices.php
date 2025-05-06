@@ -88,6 +88,9 @@ class AlunosTreinosServices extends BaseServices {
             }
 
             $treino = TreinosModel::where('aluno_id', $aluno->id)->first();
+            if(!$aluno->status) {
+                $treino = null;
+            }
             return response()->json($treino);
         }
         return response()->json([]);
