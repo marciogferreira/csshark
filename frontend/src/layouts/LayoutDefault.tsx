@@ -10,7 +10,7 @@ type DataProps = {
     children: React.ReactNode | null
 }
 export default function LayoutDefault({ children }: DataProps) {
-    const { isLogged } = useContext(AuthContext)
+    const { isLogged, user } = useContext(AuthContext)
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [open, setOpen] = useState(0);
     const [openAlert, setOpenAlert] = useState(true);
@@ -28,12 +28,13 @@ export default function LayoutDefault({ children }: DataProps) {
     return (
         <>
           <div className="wrapper">
+            { window.innerWidth > 700 && user.role == 1 && 
+              <div style={{ display: window.innerWidth > 700 ? 'block' : 'none' }} >
+                <MenuDesktop />
+              </div>
+            }
 
-            <div style={{ display: window.innerWidth > 700 ? 'block' : 'none' }} >
-              <MenuDesktop />
-            </div>
-
-            {window.innerWidth < 700  && 
+            { user.role != 1 &&
               <header style={{  }} className="d-flex pl-3 items-center bg-blue-950">
                 <div>
                     <>
