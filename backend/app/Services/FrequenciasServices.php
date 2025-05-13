@@ -36,6 +36,7 @@ class FrequenciasServices extends BaseServices {
     }
 
     public function beforeCreateData($data) {
+        $data['aluno_id'] = $this->user->id;
         $data['data'] = Carbon::now()->setTimezone('America/Sao_Paulo')->format('Y-m-d');
         $data['hora'] = Carbon::now()->setTimezone('America/Sao_Paulo')->format('H:i:s');
         return $data;
