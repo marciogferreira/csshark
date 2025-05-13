@@ -31,6 +31,10 @@ class AlunosServices extends BaseServices {
                     )
                 ");
             }
+
+            if(isset($params['status'])) {
+                $query->where('status', $params['status']);
+            }
             return $query;
         })
         ->when($this->orderBy, function($query, $orderBy) {
