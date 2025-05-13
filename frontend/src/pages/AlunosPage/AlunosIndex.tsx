@@ -23,6 +23,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                             <ErrorMessage name="nome" component="span" />
                         </span>
                     </div>
+                    
                     <div className='mb-3'>
                         <label>E-mail</label>
                         <Field name="email" type="text" className="form-control" />
@@ -30,6 +31,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                             <ErrorMessage name="email" component="span" />
                         </span>
                     </div>
+
                     <div className='mb-3'>
                         <label>CPF</label>
                         <Field name="cpf" type="text" className="form-control" />
@@ -54,13 +56,13 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         </span>
                     </div>
 
-                    <div className='mb-3'>
+                    {/* <div className='mb-3'>
                         <label>Peso (kg)</label>
                         <Field name="peso" type="number" className="form-control" />
                         <span className="error" >
                             <ErrorMessage name="peso"  className="error" />
                         </span>
-                    </div>
+                    </div> */}
 
                     <div className='mb-3'>
                         <label>Altura (m)</label>
@@ -87,18 +89,18 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                             <ErrorMessage name="esquerdo"  className="error" />
                         </span>
                     </div>
-
+{/* 
                     <div className='mb-3'>
                         <label>Direito</label>
                         <Field name="direito" type="text"className="form-control"  />
                         <span className="error">
                             <ErrorMessage name="direito"  className="error" />
                         </span>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="col-md-6">
                 
-                    <div className='mb-3'>
+                    {/* <div className='mb-3'>
                         <label>
                         <Field name="hipertensao" type="checkbox" />
                         &nbsp;
@@ -125,7 +127,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         <Field name="artrite" type="checkbox" />&nbsp;
                         Artrite
                         </label>
-                    </div>
+                    </div> */}
 
                     <div className='mb-3'>
                         <label>Lesão</label>
@@ -135,9 +137,9 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         </span>
                         
                     </div>
-
+                    
                     <div className='mb-3'>
-                        <label>Medicamentos</label>
+                        <label>Doenças</label>
                         <Field name="medicamentos" type="text" className="form-control" />
                         <span className="error">
                         <ErrorMessage name="medicamentos"  className="error" />
@@ -145,6 +147,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         
                     </div>
 
+                    {/* 
                     <div className='mb-3'>
                         <label>Estado Ativo</label>
                         <Field name="estadoAtivo" type="text" className="form-control" />
@@ -152,7 +155,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         <ErrorMessage name="estadoAtivo"  className="error" />
                         </span>
                         
-                    </div>
+                    </div> */}
 
                     <div className='mb-3'>
                         <label>Modalidade</label>
@@ -160,7 +163,6 @@ const FormWrapper = ({ Field, ErrorMessage, values, setFieldValue }: DataProps) 
                         <span className="error">
                         <ErrorMessage name="modalidade"  className="error" />
                         </span>
-                        
                     </div>
 
                     <div className='mb-3'>
@@ -233,6 +235,7 @@ export default function AlunosIndex() {
                 { name: 'nome', label: 'Nome' },
                 { name: 'cpf', label: 'CPF' },
                 { name: 'email', label: 'E-mail' },
+                { name: 'email', label: 'Msg' },
                 { name: 'esquerdo', label: 'Telefone' },
                 { name: 'esquerdo', label: 'Ações' },
             ]}
@@ -257,6 +260,11 @@ export default function AlunosIndex() {
                         <td>{item.nome}</td>
                         <td>{item.cpf}</td>
                         <td>{item.email}</td>
+                        <td>
+                            <a target='_blank' href={`https://wa.me/55${item.esquerdo.replace(/[().\s-]/g, '')}?text=Olá, *${item.nome}*. Estamos sentindo sua falta.`} className='btn btn-success btn-sm'>
+                                Enviar Msg
+                            </a>
+                        </td>
                         <td>{item.esquerdo}</td>
                         <td>
                         <Form.Check // prettier-ignore

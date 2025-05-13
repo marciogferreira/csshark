@@ -17,6 +17,7 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
    
   const[treino, setTreino] = useState<Treino>(lista_treinos);
   const[alunos, setAlunos] = useState([]);
+  const[modelosTreinos, setModelosTreinos] = useState<any>([]);
 
   async function getAlunos() {
     const response = await Api.get('alunos/options');
@@ -79,8 +80,28 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
     setTreino({...treino, [name]: lista });
   }
 
+  async function getModelosTreinos() {
+    const response = await Api.get('modelos-treinos');
+    setModelosTreinos(response.data.data);
+  }
+
+   async function aplicarModelo(id: number, e:any) {
+    if(e.target.checked) {
+      const index = modelosTreinos.findIndex((item: any) => item.id === id);
+      const treinoModelo = modelosTreinos[index];
+      console.log(treinoModelo.data)
+      console.log("Treino", lista_treinos)
+      console.log("Modelo Treino",)
+      setTreino({...lista_treinos, ...JSON.parse(treinoModelo.data)})
+    } else {
+      setTreino({...lista_treinos})
+    }
+    
+  }
+
   useEffect(() => {
     getAlunos();
+    getModelosTreinos();
     if(values.id) {
       const dataJson = JSON.parse(values.data)
       setTreino({...treino, ...dataJson});
@@ -101,6 +122,18 @@ const FormWrapper = ({ Field, ErrorMessage, values, setView, loadData }: any) =>
         error={<ErrorMessage name="aluno_id" />}
       />
       <br />
+      <p>
+        <strong>Aplicar Modelo:</strong>
+      </p>
+      <div className="row">
+      {modelosTreinos.map((item: any, indice: number) => (
+        <div className="col" key={indice}>
+          <input type="checkbox" name="modelo" id={item.nome} value={item.id} onChange={(e: any) => aplicarModelo(item.id, e)} />
+          &nbsp;
+          <label htmlFor={item.nome}>Modelo: {item.nome}</label>
+        </div>
+      ))}
+      </div>
       <table className="table table-hover table-striped">
         <tbody>
           {Object.keys(treino).map((name: any) => (
