@@ -52,27 +52,27 @@ const DashboardAdmin = () => {
          <div className="col-md-3 mb-3">
           <div className="bg-primary text-white p-3 rounded">
             <h6>Total de Alunos (Ativos)</h6>
-            <p className="display-6">{totais.total_alunos_inativos}</p>
+            <p className="display-6">{totais.total_alunos_ativos}</p>
           </div>
         </div>
 
           <div className="col-md-3 mb-3">
           <div className="bg-primary text-white p-3 rounded">
-            <h6>Total de Alunos (INativos)</h6>
-            <p className="display-6">{totais.total_alunos_ativos}</p>
+            <h6>Total de Alunos (Inativos)</h6>
+            <p className="display-6">{totais.total_alunos_inativos}</p>
           </div>
         </div>
 
 
         <div className="col-md-3 mb-3"  >
-          <div className="bg-success text-white p-3 rounded">
+          <div className="bg-primary text-white p-3 rounded">
             <h6>Modalidades</h6>
             <p className="display-6">{totais.total_modalidades}</p>
           </div>
         </div>
 
            <div className="col-md-3 mb-3"  >
-          <div className="bg-success text-white p-3 rounded">
+          <div className="bg-primary text-white p-3 rounded">
             <h6>Turmas</h6>
             <p className="display-6">{totais.total_turmas}</p>
           </div>
@@ -86,7 +86,7 @@ const DashboardAdmin = () => {
         </div>
 
         <div className="col-md-3 mb-3">
-          <div className="bg-success text-white p-3 rounded">
+          <div className="bg-primary text-white p-3 rounded">
             <h6>Presentes Hoje</h6>
             <p className="display-6">{totais.total_presencas_hoje}</p>
           </div>
