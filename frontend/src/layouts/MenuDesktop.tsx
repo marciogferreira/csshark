@@ -68,6 +68,7 @@ const MenuDesktop = () => {
                     <Link className='dropdown-item' to="/treinos">Treinos</Link>                    
                     <Link className='dropdown-item' to="/modelos-treinos">Modelos de Treinos</Link>                    
                     <Link className='dropdown-item' to="/turmas">Turmas</Link>     
+                    <Link className='dropdown-item' to="/usuarios">Usuários</Link>   
                   </Col>
                 </Row>
               </Container>
