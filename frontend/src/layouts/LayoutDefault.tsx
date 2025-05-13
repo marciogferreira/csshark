@@ -20,6 +20,7 @@ export default function LayoutDefault({ children }: DataProps) {
     const openDrawer = () => setIsDrawerOpen(true);
     const closeDrawer = () => setIsDrawerOpen(false);
 
+
     if(!isLogged) {
         return <Navigate to="/login" />
     }
@@ -27,32 +28,36 @@ export default function LayoutDefault({ children }: DataProps) {
     return (
         <>
           <div className="wrapper">
-            <div  style={{ display: window.innerWidth > 700 ? 'block' : 'none' }} >
+
+            <div style={{ display: window.innerWidth > 700 ? 'block' : 'none' }} >
               <MenuDesktop />
             </div>
-            <header style={{ display: window.innerWidth < 700 ? 'block' : 'none' }} className="flex pl-3 items-center bg-blue-950">
-              <div>
-                  <>
-                    <IconButton variant="text" size="lg" onClick={openDrawer} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                      <>
-                        {isDrawerOpen ? (
-                          <XMarkIcon className="text-white h-8 w-8 stroke-2" />
-                        ) : (
-                          <Bars3Icon className="text-white h-8 w-8 stroke-2" />
-                        )}
-                      </>
-                    </IconButton>
-                  </>
-              </div>
-              <div className="text-white">
-                <strong>CS SHARK</strong>
-              </div>
-              
-            </header>
+
+            {window.innerWidth < 700  && 
+              <header style={{  }} className="d-flex pl-3 items-center bg-blue-950">
+                <div>
+                    <>
+                      <IconButton variant="text" size="lg" onClick={openDrawer} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        <>
+                          {isDrawerOpen ? (
+                            <XMarkIcon className="text-white h-8 w-8 stroke-2" />
+                          ) : (
+                            <Bars3Icon className="text-white h-8 w-8 stroke-2" />
+                          )}
+                        </>
+                      </IconButton>
+                    </>
+                </div>
+                <div className="text-white">
+                  <strong>CS SHARK</strong>
+                </div>
+              </header>
+            }
 
             <main className="p-4">
               {children}
             </main>
+
           </div>
   
           <Menu 

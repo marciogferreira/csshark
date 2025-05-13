@@ -84,6 +84,7 @@ function NovoAlunoPage() {
                         modalidade: '',
                         frequenciaSemanal: '',
                         objetivo: '',
+                        status: true
                     }}
                     validationSchema={schemaValidator}
                     onSubmit={(values: any, form: any) => {

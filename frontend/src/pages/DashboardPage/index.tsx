@@ -20,7 +20,7 @@ const DashboardPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="container-fluid">
       <Profile />
       <hr />
       {/* <h5><strong>Atenção</strong></h5> */}
@@ -29,53 +29,77 @@ const DashboardPage = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat atque repudiandae id impedit. Nihil nostrum quisquam numquam assumenda. Commodi quod aliquid eum ratione, doloribus a ut. Aspernatur in minima fugit.
       </Alert> */}
 
-      <div className="d-flex">
+      <div className="row">
 
-        <div className="card-painel">
-          <a target="_blank" href="https://api.whatsapp.com/send?phone=5585921732639&amp;text=Olá, estou com dúvidas. Tenho acesso ao App Shark, poderia me ajudar?" style={{ color: 'black', textDecoration: 'none' }}>
-            <div className="flex">
-              <img src="https://img.icons8.com/m_outlined/512/whatsapp.png" width={60} className="rounded mx-auto d-block" alt="..." />
-              <div>
-                <strong>Dúvidas?</strong>
-                <p>
-                  Aqui você pode tirar todas as suas dúvidas.
-                </p>
-              </div>
-            </div>   
-          </a>
-        </div>
-
-        <div className="card-painel" onClick={() => navigate('/ficha')}>
-          <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." />
-          <strong>Treinos</strong>
-          <p>
-            Aqui você pode visualizar seu treino.
-          </p>
-        </div>
-
-        <div className="card-painel"  onClick={() => navigate('/aluno/modalidades')}>
-        {/* <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." /> */}
-          <div className="d-flex justify-content-center">
-          <MdDashboard size={90} />
+        <div className="col-md-3 col-12">
+          <div className="card-painel">
+            <a target="_blank" href="https://api.whatsapp.com/send?phone=5585921732639&amp;text=Olá, estou com dúvidas. Tenho acesso ao App Shark, poderia me ajudar?" style={{ color: 'black', textDecoration: 'none' }}>
+              <div className="row">
+                <div className="col-4">
+                  <img src="https://img.icons8.com/m_outlined/512/whatsapp.png"  className="img-fluid rounded mx-auto d-block" alt="..." />
+                </div>
+                <div className="col">
+                  <p><strong>Dúvidas?</strong></p>
+                  <p>
+                    Aqui você pode tirar todas as suas dúvidas.
+                  </p>
+                </div>
+              </div>   
+            </a>
           </div>
-          <strong>Modalidades</strong>
-          <p>
-            Aqui você pode visualizar as modadlidades do box e consegue realizar sua matrícula.
-          </p>
+        </div>
+
+        <div className="col-md-3 col-12" onClick={() => navigate('/ficha')}>
+          <div className="card-painel">
+          <div className="row">
+            <div className="col-4">
+              <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." />
+            </div>
+            <div className="col">
+              <strong>Treinos</strong>
+              <p>
+                Aqui você pode visualizar seu treino.
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        <div className="col-md-3 col-12"  onClick={() => navigate('/aluno/modalidades')}>
+          <div className="card-painel">
+            <div className="row">
+              <div className="col-4 justify-content-center">
+                <MdDashboard size={90} />
+              </div>
+            <div className="col">
+                <strong>Modalidades</strong>
+                <p>
+                  Aqui você pode visualizar as modadlidades do box e consegue realizar sua matrícula.
+                </p>
+            </div>
+            </div>
+          </div>
         </div>
         
       </div>
 
-      <div className="d-flex">
-        <div className="card-painel"  onClick={() => navigate('/professores/equipe')}>
-          {/* <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" width={100} className="rounded mx-auto d-block" alt="..." /> */}
-          <div className="d-flex justify-content-center">
-            <FaChalkboardTeacher size={90} />
+      <div className="row">
+        <div className="col-md-3 col-12"  onClick={() => navigate('/professores/equipe')}>
+          <div className="card-painel">
+            <div className="row">
+              <div className="col-4">
+                <div className="d-flex justify-content-center">
+                  <FaChalkboardTeacher size={90} />
+                </div>
+              </div>
+              <div className="col">
+                <strong>Professores</strong>
+                <p>
+                  Aqui você poderá conhecer toda a nossa equipe de professores.
+                </p>
+              </div>
+            </div>
           </div>
-          <strong>Professores</strong>
-          <p>
-            Aqui você poderá conhecer toda a nossa equipe de professores.
-          </p>
         </div>
       </div>
 

@@ -3,6 +3,10 @@ import Api from "../../core/api";
 import { Card } from "react-bootstrap";
 import AuthContext from "../../contexts/AuthContext";
 import Message from "../../core/Message";
+import Modalidade1 from '../../assets/modalidades/1.jpg'
+import Modalidade2 from '../../assets/modalidades/2.jpg'
+// import Modalidade3 from '../../assets/modalidades/3.jpg'
+// import Modalidade4 from '../../assets/modalidades/4.jpg'
 
 export default function ModalidadesAlunosPages() {
     const {  user}= useContext(AuthContext)
@@ -42,7 +46,9 @@ export default function ModalidadesAlunosPages() {
             <hr />
             {list.map((item: any, index: number) => (
                 <Card className="mb-3 p-3" key={index}>
-                    <img src="https://cdn-icons-png.flaticon.com/512/5073/5073650.png" className="rounded mx-auto d-block" alt="..." />
+                    {item.id === 1 && <img src={Modalidade1} className="rounded mx-auto d-block" alt="..." />}
+                    {item.id === 2 && <img src={Modalidade2} className="rounded mx-auto d-block" alt="..." />}
+                    
                     <h4>{item.nome}</h4>
                     <div className="">
                     <div>

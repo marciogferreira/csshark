@@ -187,10 +187,11 @@ i {
 }
 
 .card-painel {
+  border: 1px solid #ccc;
   background-color: #DDD;
   color: rgb(23 37 84)white;
   padding: 20px;
-  margin: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   text-align: left;
   h5 {
@@ -198,6 +199,24 @@ i {
   }
   p {
     
+    font-size: .8em;
+  }
+}
+
+
+.card-painel-blue {
+  background-color: rgb(23 37 84);
+  color: white !important;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: left;
+  h5 {
+    font-weight: bold;
+    color: white;
+  }
+  p {
+    color: white !important;
     font-size: .8em;
   }
 }
