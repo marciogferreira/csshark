@@ -5,6 +5,7 @@ import AuthContext from "../../contexts/AuthContext";
 
 import Profile from "../../components/Profile";
 import metidando from '../../assets/metidando.gif'
+import Message from "../../core/Message";
 type Treino = {
   [key: string]: any; // As propriedades podem ser string ou number
 };
@@ -17,21 +18,36 @@ export default function FichaTreinoPage() {
     const[selectedType, setSelectedType] = useState(null);
     
     
-    async function getTreino() {
-      try {
-        setLoading(true);
-        const response = await Api.get(`ficha-aluno/${user.email}`);
-        setTreino({...treino, ...JSON.parse(response.data.data)});
-        if(response.data.data) {
-          setStatus('successo');
-        }
-      } catch(e) {
-        
-      } finally {
-        setLoading(false);
+  async function getTreino() {
+    try {
+      setLoading(true);
+      const response = await Api.get(`ficha-aluno/${user.email}`);
+      setTreino({...treino, ...JSON.parse(response.data.data)});
+      if(response.data.data) {
+        setStatus('successo');
       }
-        
-    }
+    } catch(e) {
+      
+    } finally {
+      setLoading(false);
+    }   
+  }
+
+  async function finalizarTreino() {
+    try {
+      setLoading(true);
+      await Api.post(`frequencias`, {
+        aluno: user.id,
+        tipo_treino: selectedType
+      });
+      setSelectedType(null);
+      Message.success("Parabéns! Treino Finalizado com Sucesso.")
+    } catch(e) {
+    } finally {
+      setLoading(false);
+    }   
+  }
+
   useEffect(() => {
     getTreino()
   }, [])
@@ -144,7 +160,7 @@ export default function FichaTreinoPage() {
 
             {status &&
               <div className="d-flex justify-content-center mb-3 mt-3">
-                <button className="btn btn-primary"  onClick={() => setSelectedType(null)}>Finalizar Treino</button>
+                <button className="btn btn-primary"  onClick={() => finalizarTreino()}>Finalizar Treino</button>
               </div>
             }
           </> 

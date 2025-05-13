@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Frequencias as Model;
+use Carbon\Carbon;
 
 class FrequenciasServices extends BaseServices {
     
@@ -32,6 +33,12 @@ class FrequenciasServices extends BaseServices {
         }
         
         return $this->response($data);
+    }
+
+    public function beforeCreateData($data) {
+        $data['data'] = Carbon::now()->setTimezone('America/Sao_Paulo')->format('Y-m-d');
+        $data['hora'] = Carbon::now()->setTimezone('America/Sao_Paulo')->format('H:i:s');
+        return $data;
     }
 
 }
