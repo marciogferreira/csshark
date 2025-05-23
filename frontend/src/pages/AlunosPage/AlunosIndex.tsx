@@ -280,26 +280,26 @@ export default function AlunosIndex() {
             }}
             validation={(Yup: object | any) => {
                 return {
-                   nome: Yup.string().required('O nome é obrigatório'),
-                   email: Yup.string().required('O nome é obrigatório'),
-                   cpf: Yup.string().required('O nome é obrigatório'),
+                    nome: Yup.string().required('O nome é obrigatório'),
+                    email: Yup.string().required('O nome é obrigatório'),
+                    cpf: Yup.string().required('O nome é obrigatório'),
                     dataInicio: Yup.date().required('A data de início é obrigatória'),
                     professor: Yup.string().required('O professor é obrigatório'),
-                    peso: Yup.number()
-                        .positive('O peso deve ser positivo')
-                        .required('O peso é obrigatório'),
+                    // peso: Yup.number()
+                    //     .positive('O peso deve ser positivo')
+                    //     .required('O peso é obrigatório'),
                     altura: Yup.number()
                         .positive('A altura deve ser positiva')
                         .required('A altura é obrigatória'),
                     esquerdo: Yup.string().required('Este campo é obrigatório'),
-                    direito: Yup.string().required('Este campo é obrigatório'),
-                    hipertensao: Yup.boolean(),
-                    diabetes: Yup.boolean(),
-                    fibromialgia: Yup.boolean(),
-                    artrite: Yup.boolean(),
-                    lesao: Yup.string(),
+                    // direito: Yup.string().required('Este campo é obrigatório'),
+                    // hipertensao: Yup.boolean(),
+                    // diabetes: Yup.boolean(),
+                    // fibromialgia: Yup.boolean(),
+                    // artrite: Yup.boolean(),
+                    // lesao: Yup.string(),
                     medicamentos: Yup.string(),
-                    estadoAtivo: Yup.string().required('O estado ativo é obrigatório'),
+                    // estadoAtivo: Yup.string().required('O estado ativo é obrigatório'),
                     modalidade: Yup.string().required('A modalidade é obrigatória'),
                     frequenciaSemanal: Yup.string().required('A frequência semanal é obrigatória'),
                     objetivo: Yup.string().required('O objetivo é obrigatório'),
