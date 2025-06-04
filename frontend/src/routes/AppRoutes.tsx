@@ -19,6 +19,7 @@ import NovoAlunoPage from "../pages/NovoAlunoPage";
 import ModalidadesAlunosPages from "../pages/ModalidadesAlunosPage";
 import Professores from "../pages/Professores";
 import ModelosTreinosIndex from "../pages/ModelosTreinosPage/ModelosTreinosIndex";
+import AvaliacoesPage from "../pages/AvaliacoesPage";
 
 export default function AppRoutes() {
 
@@ -52,6 +53,9 @@ export default function AppRoutes() {
           <Route path="/aluno/novo" element={<NovoAlunoPage />} />
           <Route path="/aluno/modalidades" element={getLayout(<ModalidadesAlunosPages />)} />
           <Route path="/professores/equipe" element={getLayout(<Professores />)} />
+
+          <Route path="/avaliacoes" element={getLayout(<AvaliacoesPage />)} />
+          
           
           
           <Route path="*" element={getLayout(<NotFoundPage />)} />

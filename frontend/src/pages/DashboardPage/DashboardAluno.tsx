@@ -7,7 +7,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Profile from "../../components/Profile";
 import { MdDashboard } from "react-icons/md";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -29,8 +29,15 @@ const DashboardAluno = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat atque repudiandae id impedit. Nihil nostrum quisquam numquam assumenda. Commodi quod aliquid eum ratione, doloribus a ut. Aspernatur in minima fugit.
       </Alert> */}
 
+        <div className="row">
+          <div className="col-md-12">
+            <div className="d-grid gap-2">
+              <Link to="avaliacoes" className="btn btn-warning">Minhas Avaliações</Link>
+              <br />
+            </div>
+          </div>
+        </div>
       <div className="row">
-
         <div className="col-md-3 col-12">
           <div className="card-painel">
             <a target="_blank" href="https://api.whatsapp.com/send?phone=5585921732639&amp;text=Olá, estou com dúvidas. Tenho acesso ao App Shark, poderia me ajudar?" style={{ color: 'black', textDecoration: 'none' }}>
