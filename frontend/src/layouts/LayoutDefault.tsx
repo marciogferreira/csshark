@@ -38,7 +38,9 @@ export default function LayoutDefault({ children }: DataProps) {
               <header style={{  }} className="d-flex pl-3 items-center bg-blue-950">
                 <div>
                     <>
-                      <IconButton variant="text" size="lg" onClick={openDrawer} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                      <IconButton variant="text" size="lg" onClick={openDrawer} 
+                        placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}
+                          onResize={undefined} onResizeCapture={undefined}>
                         <>
                           {isDrawerOpen ? (
                             <XMarkIcon className="text-white h-8 w-8 stroke-2" />

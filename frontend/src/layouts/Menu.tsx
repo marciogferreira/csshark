@@ -25,15 +25,19 @@ export default function Menu({ isDrawerOpen, closeDrawer }: MenuProps) {
     const { handleLogout, user } = useContext(AuthContext); 
     return (
         <div  style={{  }}>
-            <Drawer id="menu-sidebar" open={isDrawerOpen} onClose={closeDrawer} placeholder={undefined} onPointerEnterCapture={null} onPointerLeaveCapture={undefined}>
+            <Drawer 
+                id="menu-sidebar"
+                open={isDrawerOpen}
+                onClose={closeDrawer} placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
                 <>
                     <Card
-                        placeholder={undefined} onPointerEnterCapture={null} onPointerLeaveCapture={undefined}
+                        placeholder={undefined} 
+                        onPointerEnterCapture={null} 
+                        onPointerLeaveCapture={undefined}
                         variant="filled"
                         color="transparent"
                         shadow={false}
-                        className="h-[calc(100vh-2rem)] w-full p-4"
-                        >
+                        className="h-[calc(100vh-2rem)] w-full p-4" onResize={undefined} onResizeCapture={undefined}                        >
                         <>
                             <div className="d-flex justify-content-between">
                                 <Profile />
