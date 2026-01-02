@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*'],
+    'paths' =>['api/*', 'login', 'logout', 'sanctum/csrf-cookie'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*', '18.206.34.84', '18.215.140.160'],
+    'allowed_origins' => ['*', '18.206.34.84', '18.215.140.160', 'https://app.csshark.com.br'],
 
     'allowed_origins_patterns' => [],
 
