@@ -5,6 +5,9 @@ import Message from '../Message';
 const Api = axios.create({
     // baseURL: 'http://localhost:8000/api/',
     baseURL: 'https://api.csshark.com.br/api/',
+    headers: {
+      "Content-Type": "application/json"
+    }
 });
 
 Api.interceptors.request.use(function (config) {
